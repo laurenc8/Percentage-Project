@@ -49,7 +49,7 @@ const PageStories = () => {
       </div>
       <div style={styles.scrollText}>
         {/* In order to get rid of the dotted lines, delete "debug" */}
-        <Scrollama onStepEnter={onStepEnter} offset={0.5} debug = {true}>
+        <Scrollama onStepEnter={onStepEnter} offset={0.5} debug>
           {/* TODO: What should [1, 2, 3, 4] be replaced with? */}
           {/* TODO: Read for context on map: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map */}
           {people.map((person, stepIndex) => ( 
