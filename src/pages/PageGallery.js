@@ -7,7 +7,6 @@ import CarouselGallery from '../components/CarouselGallery';
 export default function PageGallery() {
   return (
     <div>
-        PageGallery
         <CarouselGallery />
     </div>
  );
