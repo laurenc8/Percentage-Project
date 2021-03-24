@@ -2,13 +2,12 @@
 /** @jsx jsx */
 
 import { jsx } from 'theme-ui';
+import CarouselGallery from '../components/CarouselGallery';
 
-function PageGallery() {
+export default function PageGallery() {
   return (
     <div>
-        PageGallery
+        <CarouselGallery />
     </div>
-  );
+ );
 }
-
-export default PageGallery;
