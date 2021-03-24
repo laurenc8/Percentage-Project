@@ -62,8 +62,10 @@ const PageStories = () => {
             <Step data={stepIndex} key={stepIndex}>
               <div style={styles.step}>
                 <PersonCard person = {person}/>
-                {person['barData']}
-                <StoriesBars width="400" height="220" data={data[person['barData']]}/>
+                <div style={{width: '350px', margin: '20px'}} sx={{fontFamily: "label", color:"#727272"}}>
+                  {person['barData']}
+                  <StoriesBars width="400" height="220" data={data[person['barData']]}/>
+                </div>
               </div>
             </Step>
           ))}

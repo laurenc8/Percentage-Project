@@ -7,12 +7,12 @@ import { withTooltip, Tooltip, defaultStyles } from '@visx/tooltip';
 
 const barColor = '#000000';
 const unusedColor = '#000000';
-export const textColor = '#000000';
-export const background = '#ffffff';
-const defaultMargin = { top: 20, left: 180, right: 40, bottom: 20 };
+export const textColor = '#727272';
+export const background = '#F9F9F9';
+const defaultMargin = { top: 20, left: 200, right: 40, bottom: 20 };
 const tooltipStyles = {
   ...defaultStyles,
-  minWidth: 60,
+  minWidth: 50,
   backgroundColor: 'rgba(0,0,0,0.9)',
   color: 'white',
 };
@@ -114,7 +114,8 @@ export default withTooltip(
               tickStroke={textColor}
               tickLabelProps={() => ({
                 fill: textColor,
-                fontSize: 11,
+                fontFamily: 'Calibre, sans-serif',
+                fontSize: 15,
                 textAnchor: 'end',
                 dy: '0.33em',
               })}
