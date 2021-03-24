@@ -18,9 +18,9 @@ const styles = {
   sticky: {
     position: 'sticky',           // will remain on the top despite scolling
     zIndex: -1,
-    top: 0,                       // describes absolute position
+    top: '10vh',                       // describes absolute position
     maxHeight: '100vh',           // prevents top from scolling
-    width:'50px',
+    width:'100vh',
     margin: 'auto'
   },
   scrollText: {
@@ -48,11 +48,11 @@ const PageData = () => {
   };
 
   return ( // can only return one tag
-    <div style={styles.outer}>
+    <div style={styles.outer}>       
+    <Example width={window.innerWidth} height={window.innerHeight/2}/>
+
       <div style={styles.sticky}>
       {/* <BarGraph data={data} fill = "#fc2e1c"/> */}
-      <LineGraph2 width={window.innerWidth} height={window.innerHeight/2} > </LineGraph2> 
-      <Example width={window.innerWidth} height={window.innerHeight/2}/>
       </div>
       <div style={styles.scrollText}>
         {/* In order to get rid of the dotted lines, delete "debug" */}
@@ -67,6 +67,7 @@ const PageData = () => {
           ))}
         </Scrollama>
       </div>
+    <LineGraph2 width={window.innerWidth} height={window.innerHeight/1.3} > </LineGraph2> 
     </div>
   );
 };

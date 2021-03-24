@@ -47,7 +47,7 @@ export default function Example({ width, height, margin = defaultMargin }) {
 
       <Pack root={root} size={[width * 2, height * 2]}>
         {packData => {
-          const circles = people //packData.descendants().slice(2); // skip outer hierarchies
+          const circles = packData.descendants().slice(2); // skip outer hierarchies
           return (
             <Group top={-height - margin.bottom} left={-width / 2}>
               {circles.map((circle, i) => (
@@ -55,8 +55,8 @@ export default function Example({ width, height, margin = defaultMargin }) {
                   key={`circle-${i}`}
                   r={15}
                   cx={width*Math.random()}
-                  cy={width*Math.random()} //pick random place in 1/4 of screen by year
-                  fill={colorScale(circle.color)}
+                  cy={circle.year === '2022' ? width*0.5 : width*Math.random()} //pick random place in 1/4 of screen by year
+                  fill={(circle.color)}
                 />
               ))}
             </Group>

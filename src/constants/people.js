@@ -68,7 +68,44 @@ const miela = {
     color: '#3a627b',
     pronouns: 'she/her'
 }
+/*
+const np1 = {
+    color: '#ebde34'
+}
+const np2 = {
+    color: '#ebde34'
+}
+const np3 = {
+    color: '#ebde34'
+}
+const np4 = {
+    color: '#ebde34'
+}
+const np5 = {
+    color: '#ebde34'
+}
+const np6 = {
+    color: '#ebde34'
+}
+const np7 = {
+    color: '#ebde34'
+}
+const np8 = {
+    color: '#ebde34'
+}
+const np9 = {
+    color: '#ebde34'
+}
+const np10 = {
+    color: '#ebde34'
+}
+const np11 = {
+    color: '#ebde34'
+}
 
 
 //making list of all people to iterate through in PageStories
+export const people = [grace, robin, sarika, cindy, eric, miela,np1,np2, np3,np4,np5,np6,np7,np8,np9,np10,np11]
+*/ 
+
 export const people = [grace, robin, sarika, cindy, eric, miela]

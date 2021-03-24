@@ -1,5 +1,5 @@
 import {
-  AnimatedAxis, // any of these can be non-animated equivalents
+  AnimatedAxis, Axis, numTicks, // any of these can be non-animated equivalents
   AnimatedGrid,
   AnimatedLineSeries,
   AnimatedAreaSeries,
@@ -7,12 +7,13 @@ import {
   Tooltip,
   renderHorizontally, yAxisOrientation, xAxisOrientation,
   lightTheme, darkTheme, buildChartTheme,
-  stackOffset, animationTrajectory
+  stackOffset, animationTrajectory, AxisBottom
 } from '@visx/xychart';
 import data_list from "../constants/concentration_data";
 import CustomChartBackground from '../styles/CustomChartBackground';
 // import { customTheme } from '../styles/CustomChartTheme';
 import ResizeObserver from 'resize-observer-polyfill';
+import React, { useState } from 'react';
 
 export default function LineGraph2({ width, height }) {
 
@@ -43,10 +44,14 @@ export default function LineGraph2({ width, height }) {
     gridColorDark: '#1d1b38', // used for axis baseline if x/yxAxisLineStyles not set
     // gridStyles?: CSSProperties;
   });
+  
+  const [xAxisOrientation, setXAxisOrientation] = useState('bottom');
+  const [yAxisOrientation, setYAxisOrientation] = useState('left');
+  const [renderHorizontally, setRenderHorizontally] = useState(false);
 
   return (
     <XYChart width={width} height={height} theme = {customTheme} xScale={{ type: 'band' }} yScale={{ type: 'linear' }}>
-      <AnimatedAxis 
+      {/* <AnimatedAxis 
         label={
           stackOffset == null
             ? 'Temperature (°F)'
@@ -54,11 +59,19 @@ export default function LineGraph2({ width, height }) {
             ? 'Fraction of total temperature'
             : ''
         } 
-        orientation={renderHorizontally ? yAxisOrientation : xAxisOrientation} />
+        orientation={renderHorizontally ? yAxisOrientation : xAxisOrientation} /> */}
+      {/* <AxisBottom
+        // key={`time-axis-${animationTrajectory}-${true}`}
+        orientation={'bottom'}
+        numTicks={10}
+        xScale={'linear'}
+        // animationTrajectory={animationTrajectory}
+      /> */}
+      {/* <AxisBottom top={yMax} scale={2} numTicks={width > 520 ? 10 : 5} /> */}
       <AnimatedGrid columns={false} numTicks={4} />
       <CustomChartBackground />
-      <AnimatedAreaSeries dataKey="Line 1" data={data_list[0]} {...accessors} />
-      <AnimatedAreaSeries dataKey="Line 2" data={data_list[1]} {...accessors} />
+      <AnimatedAreaSeries dataKey="All CS Concentrators" data={data_list[0]} {...accessors} />
+      <AnimatedAreaSeries dataKey="Female CS Concentrators" data={data_list[1]} {...accessors} />
       <Tooltip
         resizeObserverPolyfill={ResizeObserver}
         snapTooltipToDatumX
