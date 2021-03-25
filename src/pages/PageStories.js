@@ -5,18 +5,9 @@ import { useState } from 'react';
 import { jsx } from 'theme-ui';
 import { Scrollama, Step } from 'react-scrollama';
 import { people } from '../constants/people';
+import { data } from '../constants/data';
 import StoriesBars from '../components/StoriesBars';
 import PersonCard from "../components/PersonCard";
-
-const data = [
-  {category: "my race", frequency: "0.1"},
-  {category: "my ethnicity", frequency: "0.3"},
-  {category: "my gender identity", frequency: "0.1"},
-  {category: "my sexual orientation", frequency: "0.2"},
-  {category: "my religious beliefs", frequency: "0.05"},
-  {category: "being a first generation student", frequency: "0.05"},
-  {category: "my income status", frequency: "0.2"},
-];
 
 // Feel free to change styles below
 const styles = {
@@ -41,7 +32,7 @@ const styles = {
   }
 }
 
-
+console.log(data[people[0]['barData']])
 
 const PageStories = () => {
   // TODO: read https://reactjs.org/docs/hooks-overview.html for context
@@ -71,7 +62,10 @@ const PageStories = () => {
             <Step data={stepIndex} key={stepIndex}>
               <div style={styles.step}>
                 <PersonCard person = {person}/>
-                <StoriesBars width="300" height="220" data={data}/>
+                <div style={{width: '350px', margin: '20px'}} sx={{fontFamily: "label", color:"#727272"}}>
+                  {person['barData']}
+                  <StoriesBars width="400" height="220" data={data[person['barData']]}/>
+                </div>
               </div>
             </Step>
           ))}

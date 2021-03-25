@@ -1,18 +1,19 @@
 import React from 'react';
-import { BarStackHorizontal } from '@visx/shape';
+import { BarStackHorizontal, AreaClosed } from '@visx/shape';
 import { Group } from '@visx/group';
 import { AxisBottom, AxisLeft } from '@visx/axis';
 import { scaleBand, scaleLinear, scaleOrdinal } from '@visx/scale';
 import { withTooltip, Tooltip, defaultStyles } from '@visx/tooltip';
+import { PatternLines } from '@visx/pattern';
 
 const barColor = '#000000';
 const unusedColor = '#000000';
-export const textColor = '#000000';
-export const background = '#ffffff';
-const defaultMargin = { top: 20, left: 180, right: 40, bottom: 20 };
+export const textColor = '#727272';
+export const background = '#F9F9F9';
+const defaultMargin = { top: 20, left: 200, right: 40, bottom: 20 };
 const tooltipStyles = {
   ...defaultStyles,
-  minWidth: 60,
+  minWidth: 50,
   backgroundColor: 'rgba(0,0,0,0.9)',
   color: 'white',
 };
@@ -62,6 +63,14 @@ export default withTooltip(
     return width < 10 ? null : (
       <div>
         <svg width={width} height={height}>
+          <PatternLines
+            id="lines"
+            height={5}
+            width={5}
+            stroke={'black'}
+            strokeWidth={1}
+            orientation={['diagonal']}
+          />
           <rect width={width} height={height} fill={background} rx={14} />
           <Group top={margin.top} left={margin.left}>
             <BarStackHorizontal
@@ -82,7 +91,8 @@ export default withTooltip(
                       y={bar.y}
                       width={bar.width}
                       height={bar.height}
-                      fill={bar.color}
+                      fill={"url('#lines')"}
+                      stroke="black"
                       onClick={() => {
                         if (events) alert(`clicked: ${JSON.stringify(bar)}`);
                       }}
@@ -114,7 +124,8 @@ export default withTooltip(
               tickStroke={textColor}
               tickLabelProps={() => ({
                 fill: textColor,
-                fontSize: 11,
+                fontFamily: 'Calibre, sans-serif',
+                fontSize: 15,
                 textAnchor: 'end',
                 dy: '0.33em',
               })}
@@ -148,7 +159,7 @@ export default withTooltip(
             {/* <div style={{ color: colorScale(tooltipData.key) }}>
               <strong>{tooltipData.key}</strong>
             </div> */}
-            <div>{tooltipData.bar.data[tooltipData.key]*100}%</div>
+            <div>{(tooltipData.bar.data[tooltipData.key]*100).toFixed(1)}%</div>
             {/* <div>
               <small>{getCategory(tooltipData.bar.data)}</small>
             </div> */}
