@@ -1,11 +1,10 @@
 //import images
-import cindy_pic from "../assets/images/CindyWang.jpg";
-import grace_pic from "../assets/images/GraceTian.jpg";
-import eric_pic from "../assets/images/jjemba_half.jpg";
-import miela_pic from "../assets/images/MielaFoster.jpg";
-import robin_pic from "../assets/images/Robin.jpg";
-import sarika_pic from "../assets/images/Sarika.jpg";
-
+import grace_pic from "../assets/plain_images/grace_tian.png";
+import robin_pic from "../assets/plain_images/robin_robinson.png";
+import sarika_pic from "../assets/plain_images/sarika_chawla.png";
+import cindy_pic from "../assets/plain_images/cindy_wang.png";
+import eric_pic from "../assets/plain_images/eric_jjemba.png";
+import miela_pic from "../assets/plain_images/miela_foster.png";
 
 //defining all people objects
 const grace = {
@@ -16,7 +15,7 @@ const grace = {
     pic: grace_pic,
     color: '#DD6552',
     pronouns: 'she/her',
-    barData: 'Have you seriously considered leaving your computer science-related field of study?'
+    barData: 'I have experienced a microaggression.'
 }
 
 const robin = {
@@ -27,7 +26,7 @@ const robin = {
     pic: robin_pic,
     color: '#3D89BF',
     pronouns: 'she/her',
-    barData: 'At my university, students from every background have an equal chance to succeed.'
+    barData: 'I generally feel comfortable asking questions in office hours.'
 }
 
 const sarika = {
@@ -38,7 +37,7 @@ const sarika = {
     pic: sarika_pic,
     color: '#EE8692',//'#0248A8',
     pronouns: 'she/her',
-    barData: 'I feel adequately supported by the CS department and the resources offered by the department.'
+    barData: 'I have to prove myself before being taken seriously in academic settings.'
 }
 
 const cindy = {
@@ -49,7 +48,7 @@ const cindy = {
     pic: cindy_pic,
     color: '#8f4c39',
     pronouns: 'she/her',
-    barData: 'Someone has once claimed to me that _____ has unfairly contributed to my acceptance to Harvard.'
+    barData: 'I have a faculty member whom I perceive as a role model.'
 }
 
 const eric = {
@@ -60,7 +59,7 @@ const eric = {
     pic: eric_pic,
     color: '#9b938f',
     pronouns: 'he/him',
-    barData: 'Someone has once claimed to me that _____ has unfairly given me an advantage in gaining job opportunities.'
+    barData: 'I believe students from every background have an equal chance to succeed at Harvard.'
 }
 
 const miela = {
@@ -71,7 +70,7 @@ const miela = {
     pic: miela_pic,
     color: '#3a627b',
     pronouns: 'she/her',
-    barData: 'I believe that conscious and unconscious biases against certain groups based on ______ still exist today.'
+    barData: 'I believe organizations whose purpose is to support underrepresented or marginalized groups are still needed today.'
 }
 
 //making list of all people to iterate through in PageStories

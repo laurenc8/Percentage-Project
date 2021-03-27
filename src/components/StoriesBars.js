@@ -1,5 +1,5 @@
 import React from 'react';
-import { BarStackHorizontal, AreaClosed } from '@visx/shape';
+import { BarStackHorizontal } from '@visx/shape';
 import { Group } from '@visx/group';
 import { AxisBottom, AxisLeft } from '@visx/axis';
 import { scaleBand, scaleLinear, scaleOrdinal } from '@visx/scale';
