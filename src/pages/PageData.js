@@ -3,15 +3,30 @@ import { Scrollama, Step } from 'react-scrollama';
 import { people } from '../constants/people';
 import { article } from '../constants/article';
 import BarGraph from '../components/bargraph'
-import LineGraph2 from '../components/LineGraph2';
+import LineGraph2 from '../components/LineGraph3';
 import Example from '../components/Dots';
 import { jsx, Styled } from 'theme-ui';
 import { letterFrequency } from '@visx/mock-data';
 import ParentSize from '@visx/responsive/lib/components/ParentSize';
+/** @jsxRuntime classic */
+/** @jsx jsx */
+/* eslint-disable import/no-webpack-loader-syntax */
+import Report from '!babel-loader!@mdx-js/loader!./Report.mdx';
+import Container from '../components/Container';
 
 const data = letterFrequency;
 
-// Feel free to change styles below
+function PageData() {
+  return (
+    <Container>
+        <Report />
+    </Container>
+  );
+};
+
+export default PageData;
+
+/*
 const styles = {
   outer: {
   },
@@ -52,24 +67,21 @@ const PageData = () => {
     <Example width={window.innerWidth} height={window.innerHeight/2}/>
 
       <div style={styles.sticky}>
-      {/* <BarGraph data={data} fill = "#fc2e1c"/> */}
-      </div>
-      <div style={styles.scrollText}>
-        {/* In order to get rid of the dotted lines, delete "debug" */}
-        <Scrollama onStepEnter={onStepEnter} offset={0.5} debug>
-          {/* TODO: Read for context on map: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map */}
-          {article.map((paragraph, stepIndex) => ( 
-            <Step data={stepIndex} key={stepIndex}>
-              <div style={styles.step}>
-                <p> {paragraph.text} </p>
-              </div>
-            </Step>
-          ))}
-        </Scrollama>
-      </div>
-    <LineGraph2 width={window.innerWidth} height={window.innerHeight/1.3} > </LineGraph2> 
-    </div>
-  );
-};
-
-export default PageData;
+//       {/* <BarGraph data={data} fill = "#fc2e1c"/> */
+//       </div>
+//       <div style={styles.scrollText}>
+//         {/* In order to get rid of the dotted lines, delete "debug" */}
+//         <Scrollama onStepEnter={onStepEnter} offset={0.5} debug>
+//           {/* TODO: Read for context on map: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map */}
+//           {article.map((paragraph, stepIndex) => ( 
+//             <Step data={stepIndex} key={stepIndex}>
+//               <div style={styles.step}>
+//                 <p> {paragraph.text} </p>
+//               </div>
+//             </Step>
+//           ))}
+//         </Scrollama>
+//       </div>
+//     <LineGraph2 width={window.innerWidth} height={window.innerHeight/1.3} > </LineGraph2> 
+//     </div>
+// */

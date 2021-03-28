@@ -2,10 +2,22 @@
 /** @jsx jsx */
 
 import { useState } from 'react';
-import { jsx, Styled } from 'theme-ui';
+import { jsx } from 'theme-ui';
 import { Scrollama, Step } from 'react-scrollama';
 import { people } from '../constants/people';
-import PersonCard from "./../components/PersonCard";
+import StoriesBars from '../components/StoriesBars';
+import PersonCard from "../components/PersonCard";
+
+
+const data = [
+  {category: "my race", frequency: "0.1"},
+  {category: "my ethnicity", frequency: "0.3"},
+  {category: "my gender identity", frequency: "0.1"},
+  {category: "my sexual orientation", frequency: "0.2"},
+  {category: "my religious beliefs", frequency: "0.05"},
+  {category: "being a first generation student", frequency: "0.05"},
+  {category: "my income status", frequency: "0.2"},
+];
 
 // Feel free to change styles below
 const styles = {
@@ -13,14 +25,13 @@ const styles = {
     display: 'flex',              // allows for two-column layout
   },
   sticky: {
+    mt: 2,
     flex: 1,                      // will absorb the space not taken by scollText
     position: 'sticky',           // will remain on the top despite scolling
     top: 0,                       // describes absolute position
-    border: '3px solid orchid',   // temporary, for illustration purposes
-    background: 'pink',           // temporary, for illustration purposes
     maxHeight: '100vh',           // prevents top from scolling
-    // alignItems: 'center',
-    // justifyContent: 'center',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   scrollText: {
     width: '50vw',                // 50% of the view width
@@ -46,18 +57,22 @@ const PageStories = () => {
   return (
     <div style={styles.outer}>
       <div style={styles.sticky}>
-        {/* TODO: Replace this with fixed images that change based on currentStepIndex */}
-        {/*I'm sticky. The current triggered step index is: {currentStepIndex}*/}
-        <img src={people[currentStepIndex].pic} align="right" width={"500px"}/>
+        <img
+          src={people[currentStepIndex].pic}
+          alt={people[currentStepIndex].name}
+          align="right"
+          width="450px"
+        />
       </div>
       <div style={styles.scrollText}>
         {/* In order to get rid of the dotted lines, delete "debug" */}
-        <Scrollama onStepEnter={onStepEnter} offset={0.5} debug>
+        <Scrollama onStepEnter={onStepEnter} offset={0.5}>
           {/* TODO: Read for context on map: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map */}
           {people.map((person, stepIndex) => ( 
             <Step data={stepIndex} key={stepIndex}>
               <div style={styles.step}>
                 <PersonCard person = {person}/>
+                <StoriesBars width="300" height="220" data={data}/>
               </div>
             </Step>
           ))}

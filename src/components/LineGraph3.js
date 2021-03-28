@@ -7,16 +7,30 @@ import {
   Tooltip,
   renderHorizontally, yAxisOrientation, xAxisOrientation,
   lightTheme, darkTheme, buildChartTheme,
-  stackOffset, animationTrajectory, AxisBottom
+  stackOffset, animationTrajectory
 } from '@visx/xychart';
 import data_list from "../constants/concentration_data";
 import CustomChartBackground from '../styles/CustomChartBackground';
 // import { customTheme } from '../styles/CustomChartTheme';
 import ResizeObserver from 'resize-observer-polyfill';
 import React, { useState } from 'react';
+import { AxisLeft, AxisBottom } from '@visx/axis';
+import { scaleBand, scaleLinear, scaleOrdinal } from '@visx/scale';
+import { Group } from '@visx/group';
 
 export default function LineGraph2({ width, height }) {
-
+  const xScale = scaleLinear({
+    domain: [2009,2020],
+    nice: true
+    /*
+      range,
+      round,
+      domain,
+      nice = false,
+      clamp = false,
+    */
+  });
+  
   const accessors = {
     xAccessor: d => d.x,
     yAccessor: d => d.y,
@@ -48,9 +62,21 @@ export default function LineGraph2({ width, height }) {
   const [xAxisOrientation, setXAxisOrientation] = useState('bottom');
   const [yAxisOrientation, setYAxisOrientation] = useState('left');
   const [renderHorizontally, setRenderHorizontally] = useState(false);
+  
+  // bounds
+  
+  xScale.rangeRound([0, 100]);
+  const margin = { top: 10, right: 0, bottom: 40, left: 0 };
+  const xMax = width - margin.left - margin.right;
+  const yMax = height - margin.top - margin.bottom;
 
   return (
-    <XYChart width={width} height={height} theme = {customTheme} xScale={{ type: 'band' }} yScale={{ type: 'linear' }}>
+    <div>
+      <svg width={width} height={height}>
+          <Group left={margin.left} top={margin.top}>
+      <XYChart theme = {customTheme} xScale={{ type: 'band' }} yScale={{ type: 'linear' }}
+        width = {width}
+        height = {height}>
       {/* <AnimatedAxis 
         label={
           stackOffset == null
@@ -60,14 +86,6 @@ export default function LineGraph2({ width, height }) {
             : ''
         } 
         orientation={renderHorizontally ? yAxisOrientation : xAxisOrientation} /> */}
-      {/* <AxisBottom
-        // key={`time-axis-${animationTrajectory}-${true}`}
-        orientation={'bottom'}
-        numTicks={10}
-        xScale={'linear'}
-        // animationTrajectory={animationTrajectory}
-      /> */}
-      {/* <AxisBottom top={yMax} scale={2} numTicks={width > 520 ? 10 : 5} /> */}
       <AnimatedGrid columns={false} numTicks={4} />
       <CustomChartBackground />
       <AnimatedAreaSeries dataKey="All CS Concentrators" data={data_list[0]} {...accessors} />
@@ -89,7 +107,23 @@ export default function LineGraph2({ width, height }) {
           </div>
         )}
       />
+      
     </XYChart>
+    <AxisBottom
+        scale={xScale}
+        numTicks={2}
+        top={yMax}
+        left={xMax/2}
+      />
+    {/* <AxisBottom
+        // key={`time-axis-${animationTrajectory}-${true}`}
+        orientation={'bottom'}
+        xScale={xScale}
+        // animationTrajectory={animationTrajectory}
+      /> */}
+    </Group>
+  </svg>
+    </div>
   );
 }
 

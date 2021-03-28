@@ -1,7 +1,7 @@
 const theme = {
   colors: {
-    text: '#000',
-    background: '#fff',
+    text: '#0F0F0F',
+    background: '#F9F9F9',
     primary: '#07c',
     secondary: '#05a',
     accent: '#609',
@@ -13,13 +13,16 @@ const theme = {
     monospace: 'Menlo, monospace',
     label: 'Calibre, sans-serif',
   },
+  fontSizes: {
+    body: '18px',
+  },
   fontWeights: {
     body: 400,
     heading: 700,
     bold: 700,
   },
   lineHeights: {
-    body: 1.5,
+    body: 1.6,
     heading: 1.125,
   },
   styles: {
@@ -27,6 +30,9 @@ const theme = {
       // global styles
       fontFamily: 'body',
       fontWeight: 'body',
+      fontSize: 'body',
+      color: 'text',
+      lineHeight: 'body',
       bg: 'background',
     },
   },
