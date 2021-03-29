@@ -16,15 +16,19 @@ const styles = {
   },
   sticky: {
     mt: 2,
-    flex: 1,                      // will absorb the space not taken by scollText
+    flex: 1,                      // will absorb the space not taken by scrollText
     position: 'sticky',           // will remain on the top despite scolling
     top: 0,                       // describes absolute position
     maxHeight: '100vh',           // prevents top from scolling
     alignItems: 'center',
     justifyContent: 'center',
+    zIndex: 0,
+    transform: 'translate3d(0,0,0)',
   },
   scrollText: {
     width: '50vw',                // 50% of the view width
+    zIndex: 1,
+    transform: 'translate3d(0,0,0)',
   },
   step: {
     margin: '50vh 0',

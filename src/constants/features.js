@@ -5,7 +5,7 @@ export const features = {
       "year": 2020,
       "concentration": "math",
       "pronouns": "she/her/hers",
-      "quote": ["adsf"],
+      "quote": "adsf",
       "photostat": "https://lh3.googleusercontent.com/pw/ACtC-3dRXFNNk54rpeqlt8eRqT0n5s9JQksN5n8rmrYo8w62uegjtIh-AD5ebrqytcrsC7DJi8j3tMknxb2qC3bgTVYNcdsaxjB7peozsAagYMSKfg2wQqVQHOwV7EoThPfuY3ATQA63R8LagASMQzT7RJPP=w1000-h1400-no?authuser=0",
       "color": "black",
       "bardata": "gender-6.1"
@@ -16,10 +16,10 @@ export const features = {
       "year": 2022,
       "concentration": "cs+stat",
       "pronouns": "she/her/hers",
-      "quote": ["asdf"],
+      "quote": "asdf",
       "photostat": "https://lh3.googleusercontent.com/pw/ACtC-3fVNMaYrhpg0v3zGy1_RfMViwfIDV1llY7dMJJEc1wsQaaG_SddFkxn37c3FsNQOt0HXPMmDpAUAHVnVWgv-_ldzp9Sq7yPNRwPOivd1_HBLUzj0oU1P1T62dg7TnxyJLMmlTMTEwGLeCryqK9xCkGF=w1000-h1400-no?authuser=0",
       "color": "black",
-      "bardata": "gender-6.1"
+      "bardata": "race_ethnicity-12"
   },
   sarika_chawla: {
       "id": "sarika_chawla",
@@ -29,17 +29,6 @@ export const features = {
       "pronouns": "she/her/hers",
       "quote": ["asdf"],
       "photostat": "https://lh3.googleusercontent.com/pw/ACtC-3e0G7mb0G56x6u_xbGS22Mis2tHo7aQd0YDYljDcqXZTajphfvHP6CfqPM18fxwjZ_6qINkuuPlmHPNxuV6FmgF-RuqgUCAvamq_0SMOSwCNPo6EpKRAaCi0wIWCOUcBsPkuMKlvRW64r_wplTm3qoh=w1000-h1400-no?authuser=0",
-      "color": "black",
-      "bardata": "I have experienced a microaggression."
-  },
-  amy_jin: {
-      "id": "amy_jin",
-      "name": "Amy Jin",
-      "year": 2022,
-      "concentration": "math",
-      "pronouns": "she/her/hers",
-      "quote": ["asdf"],
-      "photostat": "https://lh3.googleusercontent.com/pw/ACtC-3fnR1G4aKYuGj81-DphVNLWaXfrMLLOw_rQaoDf5wstu-NI8LyqhW1WadVO3QmhlylQAmfXZ3D02DqoP31kNg9f3cB_7LnzI9vrZHvVio74cIH-AHnfPB3L4oWKGh40378WTU1FAOCllMI2szb9vm6A=w1000-h1400-no?authuser=0",
       "color": "black",
       "bardata": "I have experienced a microaggression."
   },
