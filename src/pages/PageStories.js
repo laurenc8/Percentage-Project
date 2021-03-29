@@ -4,7 +4,7 @@
 import { useState } from 'react';
 import { jsx } from 'theme-ui';
 import { Scrollama, Step } from 'react-scrollama';
-import { people } from '../constants/people';
+import { features } from '../constants/features';
 import { data } from '../constants/data';
 import StoriesBars from '../components/StoriesBars';
 import PersonCard from "../components/PersonCard";
@@ -16,15 +16,19 @@ const styles = {
   },
   sticky: {
     mt: 2,
-    flex: 1,                      // will absorb the space not taken by scollText
+    flex: 1,                      // will absorb the space not taken by scrollText
     position: 'sticky',           // will remain on the top despite scolling
     top: 0,                       // describes absolute position
     maxHeight: '100vh',           // prevents top from scolling
     alignItems: 'center',
     justifyContent: 'center',
+    zIndex: 0,
+    transform: 'translate3d(0,0,0)',
   },
   scrollText: {
     width: '50vw',                // 50% of the view width
+    zIndex: 1,
+    transform: 'translate3d(0,0,0)',
   },
   step: {
     margin: '50vh 0',
@@ -32,7 +36,7 @@ const styles = {
   }
 }
 
-console.log(data[people[0]['barData']])
+const ids = ["robin_robinson", "grace_tian"]
 
 const PageStories = () => {
   // TODO: read https://reactjs.org/docs/hooks-overview.html for context
@@ -48,8 +52,8 @@ const PageStories = () => {
     <div style={styles.outer}>
       <div style={styles.sticky}>
         <img
-          src={people[currentStepIndex].pic}
-          alt={people[currentStepIndex].name}
+          src={features[ids[currentStepIndex]].photostat}
+          alt={features[ids[currentStepIndex]].name}
           align="right"
           width="450px"
         />
@@ -58,13 +62,13 @@ const PageStories = () => {
         {/* In order to get rid of the dotted lines, delete "debug" */}
         <Scrollama onStepEnter={onStepEnter} offset={0.5}>
           {/* TODO: Read for context on map: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map */}
-          {people.map((person, stepIndex) => ( 
+          {ids.map((person, stepIndex) => (
             <Step data={stepIndex} key={stepIndex}>
               <div style={styles.step}>
-                <PersonCard person = {person}/>
+                <PersonCard person = {features[person]}/>
                 <div style={{width: '350px', margin: '20px'}} sx={{fontFamily: "label", color:"#727272"}}>
-                  {person['barData']}
-                  <StoriesBars width="400" height="220" data={data[person['barData']]}/>
+                  {data[features[person].bardata].question}
+                  <StoriesBars width="400" height="220" data={data[features[person].bardata].stat}/>
                 </div>
               </div>
             </Step>
