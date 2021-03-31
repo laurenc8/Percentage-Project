@@ -1,5 +1,5 @@
 import LineGraph2 from '../components/LineGraph3';
-import Dots from '../components/Dots';
+import Dots from '../components/Dots2';
 
 export const Viz = ({ children }) => (
   <div style={{padding: 20, backgroundColor: 'lightblue'}}>{children || 'Viz'}</div>
@@ -20,7 +20,7 @@ export const Person = ({ children }) => (
 This is **markdown** with <span style={{color: "red"}}>JSX</span>: MDX!
 
 <Viz />
-<Dots width = {window.innerWidth > 720 ? 720 : window.innerWidth * 0.9} height={window.innerHeight/3} />
+<Dots width = {window.innerWidth > 720 ? 720 : window.innerWidth * 0.9} height={window.innerHeight/2.4} />
 
 ## The “STEM” dream - why concentrate in STEM-related fields?
 
@@ -51,7 +51,7 @@ A WiCS advocacy study from 2016 found that the level of male CS concentrators ha
 [some statistics about participation from diff groups at Harvard? Either from our own findings or from Harvard] 
 
 <Viz>Growth and change in CS concentrators over the years</Viz>
-<div style={{textAlign: "center"}}>
+<div style={{textAlign: "center", backgroundColor: "#F9F9F9"}}>
 <LineGraph2 width = {window.innerWidth > 720 ? 720 : window.innerWidth * 0.9 } height = {(window.innerWidth > 720 ? 720 : window.innerWidth * 0.9 )*3/4.5}> </LineGraph2> 
 </div>
 

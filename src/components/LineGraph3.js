@@ -19,8 +19,21 @@ import { scaleBand, scaleLinear, scaleOrdinal } from '@visx/scale';
 import { Group } from '@visx/group';
 
 export default function LineGraph2({ width, height }) {
+  console.log(data_list[0]["x"]);
   const xScale = scaleLinear({
-    domain: [2009,2020],
+    domain: [2016,2020],
+    nice: true
+    /*
+      range,
+      round,
+      domain,
+      nice = false,
+      clamp = false,
+    */
+  });
+
+  const yScale = scaleLinear({
+    domain: [0,100],
     nice: true
     /*
       range,
@@ -38,7 +51,7 @@ export default function LineGraph2({ width, height }) {
 
   const customTheme = buildChartTheme({
     // colors
-    // backgroundColor: '#f09ae9', // used by Tooltip, Annotation
+    backgroundColor: '#F9F9F9', // used by Tooltip, Annotation
     colors: ['rgba(0, 209, 66,0.4)','rgba(8, 222, 255, 0.4)','rgba(0, 146, 209,0.4)'], // categorical colors, mapped to series via `dataKey`s
   
     // labels
@@ -65,10 +78,11 @@ export default function LineGraph2({ width, height }) {
   
   // bounds
   
-  xScale.rangeRound([0, 100]);
   const margin = { top: 10, right: 0, bottom: 40, left: 0 };
   const xMax = width - margin.left - margin.right;
   const yMax = height - margin.top - margin.bottom;
+  xScale.rangeRound([0, xMax-2*112]);
+  yScale.rangeRound([yMax,50]);
 
   return (
     <div>
@@ -111,9 +125,19 @@ export default function LineGraph2({ width, height }) {
     </XYChart>
     <AxisBottom
         scale={xScale}
-        numTicks={2}
+        numTicks={5}
         top={yMax}
-        left={xMax/2}
+        left={112}
+        label={'Year'}
+        stroke={'#1b1a1e'}
+      />
+      <AxisLeft
+        scale={yScale}
+        numTicks={3}
+        top={0}
+        left={112}
+        label={'Number'}
+        stroke={'#1b1a1e'}
       />
     {/* <AxisBottom
         // key={`time-axis-${animationTrajectory}-${true}`}

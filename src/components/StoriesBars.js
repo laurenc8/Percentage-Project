@@ -58,7 +58,7 @@ export default withTooltip(
 
     frequencyScale.rangeRound([0, xMax]);
     categoryScale.rangeRound([yMax, 0]);
-
+    
     return width < 10 ? null : (
       <div>
         <svg width={width} height={height}>

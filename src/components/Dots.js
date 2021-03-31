@@ -1,85 +1,161 @@
-import React from 'react';
+import React, { useMemo, useState, useCallback, useRef } from 'react';
 import { Group } from '@visx/group';
-import { Pack, hierarchy } from '@visx/hierarchy';
-import { scaleQuantize } from '@visx/scale';
-import rawData, { Exoplanets as Datum } from '@visx/mock-data/lib/mocks/exoplanets';
+import { Circle } from '@visx/shape';
+import { GradientPinkRed } from '@visx/gradient';
+import { scaleLinear } from '@visx/scale';
+import genRandomNormalPoints, {
+  PointsRange,
+} from '@visx/mock-data/lib/generators/genRandomNormalPoints';
+import { withTooltip, Tooltip } from '@visx/tooltip';
+import { WithTooltipProvidedProps } from '@visx/tooltip/lib/enhancers/withTooltip';
+import { voronoi, VoronoiPolygon } from '@visx/voronoi';
+import { localPoint } from '@visx/event';
 import { people } from '../constants/people';
-// import { View, Dimensions } from 'react-native'
-import { withTooltip, Tooltip, defaultStyles } from '@visx/tooltip';
-// let {width:W,height:H} = Dimensions.get("window");
 
+const points = people; //genRandomNormalPoints(600, /* seed= */ 0.5).filter((_, i) => i < 600);
+console.log(points);
+const x = (d) => d[0];
+const y = (d) => d[1];
 
-function extent(allData, value) {
-  return [Math.min(...allData.map(value)), Math.max(...allData.map(value))];
-}
+let tooltipTimeout;
 
-const filteredPlanets = rawData.filter(d => d.distance !== 0 && d.distance != null);
-const pack = { children: filteredPlanets, name: 'root', radius: 0, distance: 0 };
+export default withTooltip(
+  ({
+    width,
+    height,
+    showControls = true,
+    hideTooltip,
+    showTooltip,
+    tooltipOpen,
+    tooltipData,
+    tooltipLeft,
+    tooltipTop,
+  }) => {
+    if (width < 10) return null;
+    const [showVoronoi, setShowVoronoi] = useState(showControls);
+    const svgRef = useRef(null);
+    const xScale = useMemo(
+      () =>
+        scaleLinear({
+          domain: [1.3, 2.2],
+          range: [0, width],
+          clamp: true,
+        }),
+      [width],
+    );
+    const yScale = useMemo(
+      () =>
+        scaleLinear({
+          domain: [0.75, 1.6],
+          range: [height, 0],
+          clamp: true,
+        }),
+      [height],
+    );
+    const voronoiLayout = useMemo(
+      () =>
+        voronoi({
+          x: d => people["x"] ?? 0,
+          y: d => people["y"] ?? 0,
+          width,
+          height,
+        })(points),
+      [width, height, xScale, yScale],
+    );
 
-const colorScale = scaleQuantize({
-  domain: extent(rawData, d => d.radius),
-  range: ['#ffe108', '#ffc10e', '#fd6d6f', '#855af2', '#11d2f9', '#49f4e7'],
-});
+    // event handlers
+    const handleMouseMove = useCallback(
+      (event) => {
+        if (tooltipTimeout) clearTimeout(tooltipTimeout);
+        if (!svgRef.current) return;
 
-const root = hierarchy(pack)
-  .sum(d => d.radius * d.radius)
-  .sort(
-    (a, b) =>
-      // sort by hierarchy, then distance
-      (a?.data ? 1 : -1) - (b?.data ? 1 : -1) ||
-      (a.children ? 1 : -1) - (b.children ? 1 : -1) ||
-      (a.data.distance == null ? -1 : 1) - (b.data.distance == null ? -1 : 1) ||
-      a.data.distance - b.data.distance,
-  );
+        // find the nearest polygon to the current mouse position
+        const point = localPoint(svgRef.current, event);
+        if (!point) return;
+        const neighborRadius = 100;
+        const closest = voronoiLayout.find(point.x, point.y, neighborRadius);
+        if (closest) {
+          showTooltip({
+            tooltipLeft: xScale(x(closest.data)),
+            tooltipTop: yScale(y(closest.data)),
+            tooltipData: closest.data,
+          });
+        }
+      },
+      [xScale, yScale, showTooltip, voronoiLayout],
+    );
 
-const defaultMargin = { top: 10, left: 30, right: 40, bottom: 80 };
+    const handleMouseLeave = useCallback(() => {
+      tooltipTimeout = window.setTimeout(() => {
+        hideTooltip();
+      }, 300);
+    }, [hideTooltip]);
 
-// export var PackProps = {
-//   width: number;
-//   height: number;
-//   margin: { top; right; bottom; left };
-// };
-
-export default function Dots({ width, height, margin = defaultMargin }) {
-  return width < 10 ? null : (
-    <svg width={width} height={height}>
-      <rect width={width} height={height} rx={14} fill="#ffffff" />
-
-      <Pack root={root} size={[width * 2, height * 2]}>
-        {packData => {
-          const circles = people; //packData.descendants().slice(2); // skip outer hierarchies
-          return (
-            <Group top={-height - margin.bottom} left={-width / 2}>
-              {circles.map((circle, i) => (
-                <circle
-                  key={`circle-${i}`}
-                  r={15}
-                  cx={width*Math.random() + width/2}
-                  cy={height*Math.random()+height+margin.bottom} //{circle.year === '2022' ? width : width*Math.random()} //pick random place in 1/4 of screen by year
-                  fill={(circle.color)}
-                />
-              ))}
-            </Group>
-          );
-        }}
-      </Pack>
-      <Tooltip
-        resizeObserverPolyfill={ResizeObserver}
-        snapTooltipToDatumX
-        snapTooltipToDatumY
-        showVerticalCrosshair
-        showSeriesGlyphs
-        renderTooltip={({ tooltipData, colorScale }) => (
-          <div>
-            <div style={{ color: colorScale(tooltipData.nearestDatum.key) }}>
-              {tooltipData.nearestDatum.key}
+    return (
+      <div>
+        <svg width={width} height={height} ref={svgRef}>
+          <GradientPinkRed id="dots-pink" />
+          {/** capture all mouse events with a rect */}
+          <rect
+            width={width}
+            height={height}
+            rx={14}
+            fill="url(#dots-pink)"
+            onMouseMove={handleMouseMove}
+            onMouseLeave={handleMouseLeave}
+            onTouchMove={handleMouseMove}
+            onTouchEnd={handleMouseLeave}
+          />
+          <Group pointerEvents="none">
+            {points.map((point, i) => (
+              <Circle
+                key={`point-${point[0]}-${i}`}
+                className="dot"
+                cx={point["x"]*width}
+                cy={point["y"]*height}
+                r={15}
+                fill={point.color}
+              />
+            ))}
+            {showVoronoi &&
+              voronoiLayout
+                .polygons()
+                .map((polygon, i) => (
+                  <VoronoiPolygon
+                    key={`polygon-${i}`}
+                    polygon={polygon}
+                    fill="white"
+                    stroke="white"
+                    strokeWidth={1}
+                    strokeOpacity={0.2}
+                    fillOpacity={tooltipData === polygon.data ? 0.5 : 0}
+                  />
+                ))}
+          </Group>
+        </svg>
+        {tooltipOpen && tooltipData && tooltipLeft != null && tooltipTop != null && (
+          <Tooltip left={tooltipLeft + 10} top={tooltipTop + 10}>
+            <div>
+              <strong>x:</strong> {'hi'}
             </div>
-            {accessors.xAccessor(tooltipData.nearestDatum.datum)}
-            {', '}
-            {accessors.yAccessor(tooltipData.nearestDatum.datum)}
+            <div>
+              <strong>y:</strong> {y(tooltipData)}
+            </div>
+          </Tooltip>
+        )}
+        {showControls && (
+          <div>
+            <label style={{ fontSize: 12 }}>
+              <input
+                type="checkbox"
+                checked={showVoronoi}
+                onChange={() => setShowVoronoi(!showVoronoi)}
+              />
+              &nbsp;Show voronoi point map
+            </label>
           </div>
         )}
-      />
-    </svg>
-  );
-}
+      </div>
+    );
+  },
+);
