@@ -1,4 +1,4 @@
-export const features = [
+export const featureArray = [
   {
       "id": "robin_robinson",
       "name": "Robin Robinson",
@@ -296,3 +296,7 @@ export const features = [
       "pronouns": "she/her/hers"
   }
 ]
+
+let feature_dict = {};
+featureArray.forEach(f => feature_dict[f.id] = f);
+export const features = feature_dict;

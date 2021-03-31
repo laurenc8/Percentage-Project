@@ -37,8 +37,6 @@ const styles = {
 }
 
 const ids = ["robin_robinson", "grace_tian"]
-let features_object = {}
-features.forEach(f => features_object[f.id] = f);
 
 const PageStories = () => {
   // TODO: read https://reactjs.org/docs/hooks-overview.html for context
@@ -54,8 +52,8 @@ const PageStories = () => {
     <div style={styles.outer}>
       <div style={styles.sticky}>
         <img
-          src={features_object[ids[currentStepIndex]].photostat}
-          alt={features_object[ids[currentStepIndex]].name}
+          src={features[ids[currentStepIndex]].photostat}
+          alt={features[ids[currentStepIndex]].name}
           align="right"
           width="450px"
         />
@@ -67,10 +65,10 @@ const PageStories = () => {
           {ids.map((person, stepIndex) => (
             <Step data={stepIndex} key={stepIndex}>
               <div style={styles.step}>
-                <PersonCard person = {features_object[person]}/>
+                <PersonCard person = {features[person]}/>
                 <div style={{width: '350px', margin: '20px'}} sx={{fontFamily: "label", color:"#727272"}}>
-                  {data[features_object[person].bardata].question}
-                  <StoriesBars width="400" height="220" data={data[features_object[person].bardata].stat}/>
+                  {data[features[person].bardata].question}
+                  <StoriesBars width="400" height="220" data={data[features[person].bardata].stat}/>
                 </div>
               </div>
             </Step>
