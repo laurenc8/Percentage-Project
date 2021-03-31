@@ -9,7 +9,7 @@ export const featureArray = [
       "photostat": "https://lh3.googleusercontent.com/pw/ACtC-3dRXFNNk54rpeqlt8eRqT0n5s9JQksN5n8rmrYo8w62uegjtIh-AD5ebrqytcrsC7DJi8j3tMknxb2qC3bgTVYNcdsaxjB7peozsAagYMSKfg2wQqVQHOwV7EoThPfuY3ATQA63R8LagASMQzT7RJPP=w1000-h1400-no?authuser=0",
       "photoraw": "https://lh3.googleusercontent.com/yQ_iU0sl_sd7uB89gM8VR059oifVhtPS9aVt0i-dwzI3UT9NhV9nL4i51-uQ_25oViWtPqqM69hcoRDct4RGmWpGewjJVzNb61bPF-Gf6LhxZjvnCK4p9nm_mrrz9BGUrcQ0kYGDgpdWfZz3Ys9HmDGb0AoN9YCBSk0x1hoR2QEzlKW-oL9RaQ3On1GBX-lOQosoOz8kacSeTE0rM3MZRPOS_6QH5TXbnm2jrWCmZ9dlXNNLQsxr_n21VHAzM5TV5KDZd7JMiwM8RrmP-4HNn8oJFqwzc3mrQ87ROm5-6cD_C9XLFH4KfAYHJCAsUSL2kO6GgNKOOcSERPP8GTlngorMOkvSnjJy0uC7Wd6jBUFuASEUx8vKjIvRDXcz8aO0nplbUOyDcd2NbBC5WYtWHsf1cvQv1AmGwFJAHIIL0aST4_SWX1ebkJmMNCFaVGfmevzyz0LkARcCf-xkIG-OoPTPwH1j0tbu0UoPN1FgMYo2HJ7c-DsUfy6ATi2n8IBEgiRj9ONjoQDPyRKcVu_E_9PZtSqcVRwVH2jmIkiW0Bl-E8kHP3t1Jjojz9QucMVLEYTaiCspE13ig-iTDQhCqjBaGzg34rpZZi_g-O9m56Sig0uwZihOiOPLaFAw4rpugXUgM8KrVh8YUd74-de9sQoW9rm2_EAeqrueRzumBNKRydrd7hP48dL0Hs-4JOpldchxePVBhQykmGLTQjXlD2s=w1000-h1400-no?authuser=1",
       "bardata": "race_ethnicity-8.3",
-      "color": "#3d89bf"
+      "color": "#028ac0"
   },
   {
       "id": "grace_tian",
@@ -33,7 +33,7 @@ export const featureArray = [
       "photostat": "https://lh3.googleusercontent.com/pw/ACtC-3e0G7mb0G56x6u_xbGS22Mis2tHo7aQd0YDYljDcqXZTajphfvHP6CfqPM18fxwjZ_6qINkuuPlmHPNxuV6FmgF-RuqgUCAvamq_0SMOSwCNPo6EpKRAaCi0wIWCOUcBsPkuMKlvRW64r_wplTm3qoh=w1000-h1400-no?authuser=0",
       "photoraw": "https://lh3.googleusercontent.com/Qh9YivrcBLSn4pn3kyq7vbuDalSxy7d8yk8cVwBavYF5J1XkC8eizVtTNYrKf92T06AF-ZFqM0EgWMqHK3-pxc9XVjsKVRdwgUdskHGHOLT3pVGEi_WVZPWNy5IHxS8aDU4muvFocHAy8B066FRTISmRKLVKXIWrxlUumAyiFQMUkGX6r53n4b1hewkPN7meGYH1P-FG3nXu5oibP5irM8nu1Fpk_Ah_mPvGbXSy6Z8iVnD5KA1n8lRN99Hw0q0hlLV0VP7iKs5K-UFr_vH-_fbU1l5B--URWk5Qjt1vQUhk9RoAA0c8Frzybe2dTJ1eb_hSMqds1MXC0AI3Kywz2-rsr3AyFg0rEwIpHl_LwEQNxweNLqFG0sMLmj1igSx7DSJBADKfTlgDfwmFZ9lOuuNztMPp1kujws16ShkDDMrIo65XgOvFocmXIF4ABNpb5HTbfzemKaWmx8Sk5a3_WXdvUEcKkUj7v25MESJ9wjCOZINV8ydIsUzHxcOqeLZ4VNNNuWApqYeoqfnuj_5dHmPfY-TALEjEPDoom7gZQexsKnBysY3_fNrv2l2USEAYTkUh0_mb-1PGQc7FHeZdZMcpnAQlFL3wfn_ud6nyqSUZFDIVK4OTaENi6b7x7eJNF7Nv4_5Q8NdLCY0iaW05MU4irs54cUBR19fROjA3YBbZCB8d1K-TuUwgcC1gze_HJer2aRzGikLx0cX6pGojtTk=w500-h701-no?authuser=1",
       "bardata": "disability-7.4",
-      "color": "#ee8692"
+      "color": "#d6bdb9"
   },
   {
       "id": "emily_chan",
@@ -69,7 +69,7 @@ export const featureArray = [
       "photostat": "https://lh3.googleusercontent.com/lUmMhIxF_NNF8jfLLSEl6XKutipRnCQttpQ_WdzMVOhG00pUe_fMbm4toiehg3ZGTSQ6evXPIyAUAfk4UsgMT72qWSYRCef7QjX5ecyxGMRT7d_JC_sVXzQlumBzoQTPX-sx-LNnNUWXuXKHnGXNVHterZsGIE72vYIMaHMTiYEhbaYcNWa0l4YLpf4oCdvvWLKr7t3J4Gw8rpKvovCdapXTCvxKPnSut9C3uCnvChZEjISW4_qV1_aD74uY1dlbMoTv6EsrpD32Tqs0bDZ2dwb855-p05su07y0SkWjpBZ3SqlTtxU_H6BW_iJNAeGBw9aI4OqUBy1vDQIDZwWo_PqyB-5_Awt29b9wcdFHvYMWJyNcMv0mhOtW6l3BWedc3L28jbQugSOwyUKIewvpFl5nV-UG0CPFa-X-VphFaCK96_QEJMtnXazK81W0rLUmqx1bnNUVuknAFJxP9hsc7USBm_FYWZ2VZQb45VNJHkr_2PJiTyH8kaUyIh34__vTq3NL0y2S77KbCkbSwLgFjM4GSQpGBGWHqgvd4CgSYr_5L_MWhVCGC4S1IqPqMwGxhz7En4NjJVaH4S3w_ZpiwOUMsC6TOwahFVly_mNhJD5qDOkd5YcJQY-A3M7cXZwyAcrOReA-DRbnOPfx9p9nMGY--BRK3Pi4593EUQ-i72HvLfzBOU9iKZn7wPSunl5-3bIkFPCHGf55qZzhK4hSemRB=w1000-h1400-no?authuser=0",
       "photoraw": "https://lh3.googleusercontent.com/HtPPAKvtnIQ3YpAXTecawfw6NUlngujKD2_aO3CJfBvUn0Q2BO6aetm6Twubkk2vBiv65DrSwWLWnNMeSbQiS5T3auANBmOrIYJkt6OVbMl3QGQGdtiKLy7aaOCXzxI6cShP3zXzvrd_ksFMgo5aGeGsEWR-JAPib9r_wUCz4PMB9Jd8HbUUvr1899cokJZvR8m3COb3Dv1J4ebnf2u-hXqhItLOwZBah4JEBSEiQHFUWO4DTFqFLQzd38TWVmvFEzJ6iF2Du-7zfY8QYYVAcmH8ics7OyobrcM-cUAARh-om6_vyV7CcV0icQ9HVWWzSEbWbIjnTsHXwql9TJ-JRxLU3epC-DsR0Y4h9-0YusENt46o1Qi1fTwa9fdflVQDY0QvjAeH6jDaysn03RENRjVzFzetmUIhuvJQbG-kpScGM8ZMbMwMZ2qSvG6b25V3UQtdX3YC_6NPARpwpkTVq_0FBkvc20_FuKntmoRAhJuVNvdkKznFNGs13yG8zbqJdImGDYIuZCZEmKbC3Fk6g1XONEF2Plomxt63i8IDPxB0VPHyfIK3MfGZZ2re2d6IY2qjNkj445wETzLwR5uwF0kvup9JccT2ztXOtJn0TrBrtb131oY5SJKq4aoRul5PnR9DBinWj5OogDfo6Lf9mggNYwH-GN5CVnV3M5_sGBXlKmpDONp4r1NFJnEDVIqS-zXbTEDvdtczqU2jLCBow4g=w500-h700-no?authuser=1",
       "bardata": "gender-9",
-      "color": "#8f4c39"
+      "color": "#b46659"
   },
   {
       "id": "eric_jjemba",
