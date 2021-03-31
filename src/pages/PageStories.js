@@ -36,7 +36,7 @@ const styles = {
   }
 }
 
-const ids = ["robin_robinson", "grace_tian"]
+const ids = ["robin_robinson", "grace_tian", "sarika_chawla", "emily_chan", "miela_foster", "cindy_wang", "eric_jjemba", "amy_jin", "harinni_kannan", "eshika_saxena", "isabelle_zheng", "silvia_casacuberta_puig"]
 
 const PageStories = () => {
   // TODO: read https://reactjs.org/docs/hooks-overview.html for context
@@ -52,7 +52,7 @@ const PageStories = () => {
     <div style={styles.outer}>
       <div style={styles.sticky}>
         <img
-          src={features[ids[currentStepIndex]].photostat}
+          src={features[ids[currentStepIndex]].photoraw}
           alt={features[ids[currentStepIndex]].name}
           align="right"
           width="450px"

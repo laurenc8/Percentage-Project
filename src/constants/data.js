@@ -6,11 +6,23 @@ export const data = {
     {category: "Men", frequency: "0.8209"},
     {category: "Women", frequency: "0.9459"},
   ]},
+  "gender-5.2": {
+    question: "I feel confident studying computer science and related fields.",
+    stat: [
+    {category: "Men", frequency: "0.6716"},
+    {category: "Women", frequency: "0.2703"},
+  ]},
   "gender-6.1": {
     question: "I have experienced a microaggression.",
     stat: [
       {category: "Men", frequency: "0.1194"},
       {category: "Women", frequency: "0.5811"},
+  ]},
+  "gender-6.2": {
+    question: "I have been interrupted or talked to condescendingly by someone who assumed they knew more.",
+    stat: [
+      {category: "Men", frequency: "0.2836"},
+      {category: "Women", frequency: "0.6757"},
   ]},
   "gender-6.3": {
     question: "In a group project, my opinion is as respected as that of other group members.",
@@ -30,6 +42,12 @@ export const data = {
     {category: "Men", frequency: "0.1343"},
     {category: "Women", frequency: "0.4730"},
   ]},
+  "gender-8.2": {
+    question: "I feel more comfortable in a class taught by a professor who shares a similar identity.",
+    stat: [
+    {category: "Men", frequency: "0.1194"},
+    {category: "Women", frequency: "0.5946"},
+  ]},
   "gender-8.6": {
     question: "If Piazza or Ed didn’t allow for anonymous questions, I would not likely post on the platform.",
     stat: [
@@ -44,6 +62,15 @@ export const data = {
   ]},
 
   // RACE & ETHNICITY
+  "race_ethnicity-7.4": {
+    question: "I have to prove myself before being taken seriously in academic settings.",
+    stat: [
+    {category: "Mixed", frequency: "0.4545"},
+    {category: "White", frequency: "0.2955"},
+    {category: "Hispanic/Latinx", frequency: "0.4286"},
+    {category: "Asian", frequency: "0.2593"},
+    {category: "African American/Black", frequency: "0.4375"},
+  ]},
   "race_ethnicity-8.3": {
     question: "I generally feel comfortable asking questions in office hours.",
     stat: [
