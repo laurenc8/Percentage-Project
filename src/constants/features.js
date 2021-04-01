@@ -63,7 +63,7 @@ export const featureArray = [
       "id": "cindy_wang",
       "name": "Cindy Wang",
       "year": 2024,
-      "concentration": "Computer Science/Pre-med",
+      "concentration": "Computer Science + Statistics",
       "pronouns": "she/her/hers",
       "quote": "I feel like I have to like work a little harder to prove myself.",
       "photostat": "https://lh3.googleusercontent.com/lUmMhIxF_NNF8jfLLSEl6XKutipRnCQttpQ_WdzMVOhG00pUe_fMbm4toiehg3ZGTSQ6evXPIyAUAfk4UsgMT72qWSYRCef7QjX5ecyxGMRT7d_JC_sVXzQlumBzoQTPX-sx-LNnNUWXuXKHnGXNVHterZsGIE72vYIMaHMTiYEhbaYcNWa0l4YLpf4oCdvvWLKr7t3J4Gw8rpKvovCdapXTCvxKPnSut9C3uCnvChZEjISW4_qV1_aD74uY1dlbMoTv6EsrpD32Tqs0bDZ2dwb855-p05su07y0SkWjpBZ3SqlTtxU_H6BW_iJNAeGBw9aI4OqUBy1vDQIDZwWo_PqyB-5_Awt29b9wcdFHvYMWJyNcMv0mhOtW6l3BWedc3L28jbQugSOwyUKIewvpFl5nV-UG0CPFa-X-VphFaCK96_QEJMtnXazK81W0rLUmqx1bnNUVuknAFJxP9hsc7USBm_FYWZ2VZQb45VNJHkr_2PJiTyH8kaUyIh34__vTq3NL0y2S77KbCkbSwLgFjM4GSQpGBGWHqgvd4CgSYr_5L_MWhVCGC4S1IqPqMwGxhz7En4NjJVaH4S3w_ZpiwOUMsC6TOwahFVly_mNhJD5qDOkd5YcJQY-A3M7cXZwyAcrOReA-DRbnOPfx9p9nMGY--BRK3Pi4593EUQ-i72HvLfzBOU9iKZn7wPSunl5-3bIkFPCHGf55qZzhK4hSemRB=w1000-h1400-no?authuser=0",
