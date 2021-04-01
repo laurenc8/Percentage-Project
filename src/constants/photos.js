@@ -27,4 +27,3 @@ const lauren_chen =
 
 //IMAGE ARRAY
 export const images = [robin_robinson, grace_tian, sarika_chawla, emily_chan, miela_foster, cindy_wang, eric_jjemba, amy_jin, harinni_kannan, eshika_saxena, isabelle_zheng, lauren_chen];
-
