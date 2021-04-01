@@ -69,13 +69,14 @@ function ImageGallery() {
       {
         lightboxDisplay ? 
         <div id="lightbox" onClick={hideLightBox}>
-          <button onClick={showPrev}>⭠</button>
+          <a class="prev" onClick={showPrev}>&#10094;</a>
           <img id="lightbox-img" src={imageToShow}></img>
-          <button onClick={showNext}>⭢</button>
+          <a class="next" onClick={showNext}>&#10095;</a>
         </div>
        : ""
       }
     </>
   );
 }
+
 
