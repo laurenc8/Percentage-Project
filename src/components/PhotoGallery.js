@@ -60,7 +60,6 @@ function ImageGallery() {
       setImageToShow(nextImage);
     }
   };
-  
 
   return (
     <>
@@ -78,5 +77,3 @@ function ImageGallery() {
     </>
   );
 }
-
-
