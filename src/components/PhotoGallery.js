@@ -1,18 +1,17 @@
 import { useState } from 'react';
 import "./PhotoGallery.css";
-import { images } from '../constants/photos';
+import { features } from '../constants/features';
 
 //MAIN APP COMPONENT
 export default function Gallery() {
   return (
     <div className="Gallery">
-      <h1>Our Gallery</h1>
-      <section id="photos">
       <ImageGallery />
-      </section>
     </div>
   );
 }
+
+const images = Object.values(features).filter(person => person.photostat);
 
 //MAIN LIGHTBOX
 //Holds Images Cards and Lightbox
@@ -23,18 +22,20 @@ function ImageGallery() {
   
   //looping through our images array to create img elements
   const imageCards = images.map((image) => (
-    <img className="image-card" onClick={() => showImage(image)} src={image} />
+    <img className="image-card" onClick={() => showImage(image)} src={image.photostat}alt="" />
   ));
 
   //function to show a specific image in the lightbox, amd make lightbox visible
   const showImage = (image) => {
     setImageToShow(image);
     setLightBoxDisplay(true);
+    disableScroll();
   };
 
   //hide lightbox
   const hideLightBox = () => {
     setLightBoxDisplay(false);
+    enableScroll();
   };
 
   //show next image in lightbox
@@ -61,18 +62,26 @@ function ImageGallery() {
     }
   };
 
+  function disableScroll() {
+    document.body.style.overflow = 'hidden';
+    document.querySelector('html').scrollTop = window.scrollY;
+    }
+    
+  function enableScroll() {
+    document.body.style.overflow = null;
+    }
+
   return (
     <>
       <div> {imageCards} </div>
       
       {
-        lightboxDisplay ? 
+        lightboxDisplay &&
         <div id="lightbox" onClick={hideLightBox}>
           <a class="prev" onClick={showPrev}>&#10094;</a>
-          <img id="lightbox-img" src={imageToShow}></img>
+          <img id="lightbox-img" src={imageToShow.photostat} alt = ""></img>
           <a class="next" onClick={showNext}>&#10095;</a>
         </div>
-       : ""
       }
     </>
   );

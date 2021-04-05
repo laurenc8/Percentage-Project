@@ -7,9 +7,11 @@ import Gallery from '../components/PhotoGallery';
 export default function PageGallery() {
   return (
     <div>
-        <Gallery />
+      <h1>Our Gallery</h1>
+        <section id="photos">
+          <Gallery />
+        </section>
     </div>
  );
 }
-
 
