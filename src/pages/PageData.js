@@ -1,10 +1,9 @@
 /** @jsxRuntime classic */
 /** @jsx jsx */
 /* eslint-disable import/no-webpack-loader-syntax */
+import {jsx, css} from '@emotion/core';
 import Report from '!babel-loader!@mdx-js/loader!./Report.mdx';
 import Container from '../components/Container';
-
-import { jsx } from 'theme-ui';
 
 function PageData() {
   return (
@@ -12,6 +11,6 @@ function PageData() {
         <Report />
     </Container>
   );
-}
+};
 
 export default PageData;
