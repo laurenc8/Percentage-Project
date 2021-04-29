@@ -1,17 +1,16 @@
 import { useState } from 'react';
+import { Grid, Image } from 'theme-ui';
 import "./PhotoGallery.css";
 import { features } from '../constants/features';
 
 //MAIN APP COMPONENT
 export default function Gallery() {
   return (
-    <div className="Gallery">
+    <div>
       <ImageGallery />
     </div>
   );
 }
-
-const images = Object.values(features).filter(person => person.photostat);
 
 //MAIN LIGHTBOX
 //Holds Images Cards and Lightbox
@@ -19,10 +18,12 @@ const images = Object.values(features).filter(person => person.photostat);
 function ImageGallery() {
   const [imageToShow, setImageToShow] = useState("");
   const [lightboxDisplay, setLightBoxDisplay] = useState(false);
-  
+  const images = Object.values(features).filter(person => person.photostat);
+  console.log(images);
+
   //looping through our images array to create img elements
   const imageCards = images.map((image) => (
-    <img className="image-card" onClick={() => showImage(image)} src={image.photostat}alt="" />
+    <Image className="image-card" onClick={() => showImage(image)} src={image.photostat}alt="" />
   ));
 
   //function to show a specific image in the lightbox, amd make lightbox visible
@@ -72,8 +73,10 @@ function ImageGallery() {
     }
 
   return (
-    <>
-      <div> {imageCards} </div>
+    <> 
+      <Grid gap={2} columns={[2, null, 4]}> 
+        {imageCards} 
+      </Grid> 
       
       {
         lightboxDisplay &&
