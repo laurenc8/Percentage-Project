@@ -1,23 +1,23 @@
-import React from 'react';
 import { BarStackHorizontal } from '@visx/shape';
 import { Group } from '@visx/group';
 import { AxisBottom, AxisLeft } from '@visx/axis';
 import { scaleBand, scaleLinear, scaleOrdinal } from '@visx/scale';
 import { withTooltip, Tooltip, defaultStyles } from '@visx/tooltip';
+import { PatternLines } from '@visx/pattern';
 
 const barColor = '#000000';
 const unusedColor = '#000000';
-export const textColor = '#000000';
-export const background = '#ffffff';
-const defaultMargin = { top: 20, left: 180, right: 40, bottom: 20 };
-const tooltipStyles = {
-  ...defaultStyles,
-  minWidth: 60,
-  backgroundColor: 'rgba(0,0,0,0.9)',
-  color: 'white',
-};
+export const textColor = '#727272';
+export const background = '#F9F9F9';
+const defaultMargin = { top: 20, left: 200, right: 40, bottom: 20 };
+// const tooltipStyles = {
+//   ...defaultStyles,
+//   minWidth: 50,
+//   backgroundColor: 'rgba(0,0,0,0.9)',
+//   color: 'white',
+// };
 
-let tooltipTimeout;
+// let tooltipTimeout;
 
 export default withTooltip(
   ({
@@ -26,12 +26,12 @@ export default withTooltip(
     data,
     events = false,
     margin = defaultMargin,
-    tooltipOpen,
-    tooltipLeft,
-    tooltipTop,
-    tooltipData,
-    hideTooltip,
-    showTooltip,
+    // tooltipOpen,
+    // tooltipLeft,
+    // tooltipTop,
+    // tooltipData,
+    // hideTooltip,
+    // showTooltip,
   }) => {
     const keys = ["frequency"]
 
@@ -62,6 +62,14 @@ export default withTooltip(
     return width < 10 ? null : (
       <div>
         <svg width={width} height={height}>
+          <PatternLines
+            id="lines"
+            height={5}
+            width={5}
+            stroke={'black'}
+            strokeWidth={1}
+            orientation={['diagonal']}
+          />
           <rect width={width} height={height} fill={background} rx={14} />
           <Group top={margin.top} left={margin.left}>
             <BarStackHorizontal
@@ -76,32 +84,35 @@ export default withTooltip(
               {barStacks =>
                 barStacks.map(barStack =>
                   barStack.bars.map(bar => (
-                    <rect
-                      key={`barstack-horizontal-${barStack.index}-${bar.index}`}
-                      x={bar.x}
-                      y={bar.y}
-                      width={bar.width}
-                      height={bar.height}
-                      fill={bar.color}
-                      onClick={() => {
-                        if (events) alert(`clicked: ${JSON.stringify(bar)}`);
-                      }}
-                      onMouseLeave={() => {
-                        tooltipTimeout = window.setTimeout(() => {
-                          hideTooltip();
-                        }, 300);
-                      }}
-                      onMouseMove={() => {
-                        if (tooltipTimeout) clearTimeout(tooltipTimeout);
-                        const top = bar.y + margin.top;
-                        const left = bar.x + bar.width + margin.left;
-                        showTooltip({
-                          tooltipData: bar,
-                          tooltipTop: top,
-                          tooltipLeft: left,
-                        });
-                      }}
-                    />
+                    <Group>
+                      <rect
+                        key={`barstack-horizontal-${barStack.index}-${bar.index}`}
+                        x={bar.x}
+                        y={bar.y}
+                        width={bar.width}
+                        height={bar.height}
+                        fill={"url('#lines')"}
+                        stroke="black"
+                        // onMouseLeave={() => {
+                        //   tooltipTimeout = window.setTimeout(() => {
+                        //     hideTooltip();
+                        //   }, 300);
+                        // }}
+                        // onMouseMove={() => {
+                        //   if (tooltipTimeout) clearTimeout(tooltipTimeout);
+                        //   const top = bar.y + margin.top;
+                        //   const left = bar.x + bar.width + margin.left;
+                        //   showTooltip({
+                        //     tooltipData: bar,
+                        //     tooltipTop: top,
+                        //     tooltipLeft: left,
+                        //   });
+                        // }}
+                      />
+                      <text x={bar.x + bar.width + 10} y={bar.y + bar.height/2 + 6} style={{fill: textColor, fontFamily: 'Calibre, sans-serif', fontSize: 18}}>
+                        {(bar.bar[1]*100).toFixed(1)}%
+                      </text>
+                    </Group>
                   )),
                 )
               }
@@ -114,7 +125,8 @@ export default withTooltip(
               tickStroke={textColor}
               tickLabelProps={() => ({
                 fill: textColor,
-                fontSize: 11,
+                fontFamily: 'Calibre, sans-serif',
+                fontSize: 15,
                 textAnchor: 'end',
                 dy: '0.33em',
               })}
@@ -126,7 +138,8 @@ export default withTooltip(
               tickStroke={textColor}
               tickLabelProps={() => ({
                 fill: textColor,
-                fontSize: 11,
+                fontFamily: 'Calibre, sans-serif',
+                fontSize: 15,
                 textAnchor: 'middle',
               })}
             /> */}
@@ -143,17 +156,17 @@ export default withTooltip(
           }}
         >
         </div>
-        {tooltipOpen && tooltipData && (
+        {/* {tooltipOpen && tooltipData && (
           <Tooltip top={tooltipTop} left={tooltipLeft} style={tooltipStyles}>
-            {/* <div style={{ color: colorScale(tooltipData.key) }}>
+            <div style={{ color: colorScale(tooltipData.key) }}>
               <strong>{tooltipData.key}</strong>
-            </div> */}
-            <div>{tooltipData.bar.data[tooltipData.key]*100}%</div>
-            {/* <div>
+            </div>
+            <div>{(tooltipData.bar.data[tooltipData.key]*100).toFixed(1)}%</div>
+            <div>
               <small>{getCategory(tooltipData.bar.data)}</small>
-            </div> */}
+            </div>
           </Tooltip>
-        )}
+        )} */}
       </div>
     );
   },

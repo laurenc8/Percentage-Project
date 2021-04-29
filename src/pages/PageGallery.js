@@ -2,13 +2,16 @@
 /** @jsx jsx */
 
 import { jsx } from 'theme-ui';
+import Gallery from '../components/PhotoGallery';
 
-function PageGallery() {
+export default function PageGallery() {
   return (
     <div>
-        PageGallery
+      <h1>Our Gallery</h1>
+        <section id="photos">
+          <Gallery />
+        </section>
     </div>
-  );
+ );
 }
 
-export default PageGallery;

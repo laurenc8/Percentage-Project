@@ -1,26 +1,12 @@
 //import images
-import cindy_pic from "../assets/images/CindyWang.jpg";
-import grace_pic from "../assets/images/GraceTian.jpg";
-import eric_pic from "../assets/images/jjemba_half.jpg";
-import miela_pic from "../assets/images/MielaFoster.jpg";
-import robin_pic from "../assets/images/Robin.jpg";
-import sarika_pic from "../assets/images/Sarika.jpg";
-
+import grace_pic from "../assets/plain_images/grace_tian.png";
+import robin_pic from "../assets/plain_images/robin_robinson.png";
+import sarika_pic from "../assets/plain_images/sarika_chawla.png";
+import cindy_pic from "../assets/plain_images/cindy_wang.png";
+import eric_pic from "../assets/plain_images/eric_jjemba.png";
+import miela_pic from "../assets/plain_images/miela_foster.png";
 
 //defining all people objects
-const robin = {
-    name: 'Robin Robinson',
-    year: '2022',
-    concentration: 'Statistics',
-    quotes: ["I remember I was at office hours for Stat 110. And I was trying to ask the student sitting in front of me, like, \"What'd you get for number 3? I got 5.\" And he said, \"What?\" and was talking to me very disrespectfully and threw in the word \"dumb\" or something. I was just like, \"Are you not going to tell me how to do it?\" I don't know, it was just very disheartening. I kind of just left office hours, but it gave me a really bad impression of the department and the students in the department."],
-    pic: robin_pic,
-    color: '#3D89BF',
-    pronouns: 'she/her',
-    // x: Math.random(),
-    // y: Math.random()
-    //maybe also their assigned data viz graph?
-}
-
 const grace = {
     name: 'Grace Tian',
     year: '2022',
@@ -29,8 +15,18 @@ const grace = {
     pic: grace_pic,
     color: '#DD6552',
     pronouns: 'she/her',
-    // x: Math.random(),
-    // y: Math.random()
+    barData: 'I have experienced a microaggression.'
+}
+
+const robin = {
+    name: 'Robin Robinson',
+    year: '2022',
+    concentration: 'Statistics',
+    quotes: ["I remember I was at office hours for Stat 110. And I was trying to ask the student sitting in front of me, like, \"What'd you get for number 3? I got 5.\" And he said, \"What?\" and was talking to me very disrespectfully and threw in the word \"dumb\" or something. I was just like, \"Are you not going to tell me how to do it?\" I don't know, it was just very disheartening. I kind of just left office hours, but it gave me a really bad impression of the department and the students in the department."],
+    pic: robin_pic,
+    color: '#3D89BF',
+    pronouns: 'she/her',
+    barData: 'I generally feel comfortable asking questions in office hours.'
 }
 
 const sarika = {
@@ -41,8 +37,7 @@ const sarika = {
     pic: sarika_pic,
     color: '#EE8692',//'#0248A8',
     pronouns: 'she/her',
-    // x: Math.random(),
-    // y: Math.random()
+    barData: 'I have to prove myself before being taken seriously in academic settings.'
 }
 
 const cindy = {
@@ -53,8 +48,7 @@ const cindy = {
     pic: cindy_pic,
     color: '#8f4c39',
     pronouns: 'she/her',
-    // x: Math.random(),
-    // y: Math.random()
+    barData: 'I have a faculty member whom I perceive as a role model.'
 }
 
 const eric = {
@@ -65,8 +59,7 @@ const eric = {
     pic: eric_pic,
     color: '#9b938f',
     pronouns: 'he/him',
-    // x: Math.random(),
-    // y: Math.random()
+    barData: 'I believe students from every background have an equal chance to succeed at Harvard.'
 }
 
 const miela = {
@@ -77,47 +70,10 @@ const miela = {
     pic: miela_pic,
     color: '#3a627b',
     pronouns: 'she/her',
-    // x: Math.random(),
-    // y: Math.random()
+    barData: 'I believe organizations whose purpose is to support underrepresented or marginalized groups are still needed today.'
 }
-/*
-const np1 = {
-    color: '#ebde34'
-}
-const np2 = {
-    color: '#ebde34'
-}
-const np3 = {
-    color: '#ebde34'
-}
-const np4 = {
-    color: '#ebde34'
-}
-const np5 = {
-    color: '#ebde34'
-}
-const np6 = {
-    color: '#ebde34'
-}
-const np7 = {
-    color: '#ebde34'
-}
-const np8 = {
-    color: '#ebde34'
-}
-const np9 = {
-    color: '#ebde34'
-}
-const np10 = {
-    color: '#ebde34'
-}
-const np11 = {
-    color: '#ebde34'
-}
-
 
 //making list of all people to iterate through in PageStories
 export const people = [grace, robin, sarika, cindy, eric, miela,np1,np2, np3,np4,np5,np6,np7,np8,np9,np10,np11]
-*/ 
 
 export const people = [grace, robin, sarika, cindy, eric, miela]
