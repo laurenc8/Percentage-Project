@@ -4,8 +4,6 @@
 import Report from '!babel-loader!@mdx-js/loader!./Report.mdx';
 import Container from '../components/Container';
 
-const data = letterFrequency;
-
 function PageData() {
   return (
     <Container>
