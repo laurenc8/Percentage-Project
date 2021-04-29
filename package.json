@@ -3,14 +3,28 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@mdx-js/loader": "^1.6.22",
     "@testing-library/jest-dom": "^5.11.6",
     "@testing-library/react": "^11.2.2",
     "@testing-library/user-event": "^12.2.2",
+    "@visx/axis": "^1.5.0",
+    "@visx/group": "^1.0.0",
+    "@visx/legend": "^1.4.0",
+    "@visx/mock-data": "^1.5.0",
+    "@visx/pattern": "^1.7.0",
+    "@visx/responsive": "^1.3.0",
+    "@visx/scale": "^1.7.0",
+    "@visx/shape": "^1.4.0",
+    "@visx/text": "^1.7.0",
+    "@visx/tooltip": "^1.5.0",
+    "@vx/axis": "0.0.199",
     "bootstrap": "^4.5.3",
     "npm": "^6.14.11",
     "react": "^17.0.1",
     "react-bootstrap": "^1.4.3",
     "react-dom": "^17.0.1",
+    "react-images": "^1.2.0-beta.6",
+    "react-photo-gallery": "^8.0.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.1",
     "react-scrollama": "^2.2.15",
@@ -41,5 +55,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "babel-loader": "^8.1.0"
   }
 }

@@ -2,9 +2,12 @@
 /** @jsx jsx */
 
 import { useState } from 'react';
-import { jsx, Styled } from 'theme-ui';
+import { jsx } from 'theme-ui';
 import { Scrollama, Step } from 'react-scrollama';
-import { people } from '../constants/people';
+import { features } from '../constants/features';
+import { data } from '../constants/data';
+import StoriesBars from '../components/StoriesBars';
+import PersonCard from "../components/PersonCard";
 
 // Feel free to change styles below
 const styles = {
@@ -12,23 +15,28 @@ const styles = {
     display: 'flex',              // allows for two-column layout
   },
   sticky: {
-    flex: 1,                      // will absorb the space not taken by scollText
+    mt: 2,
+    flex: 1,                      // will absorb the space not taken by scrollText
     position: 'sticky',           // will remain on the top despite scolling
     top: 0,                       // describes absolute position
-    border: '3px solid orchid',   // temporary, for illustration purposes
-    background: 'pink',           // temporary, for illustration purposes
     maxHeight: '100vh',           // prevents top from scolling
+    alignItems: 'center',
+    justifyContent: 'center',
+    zIndex: 0,
+    transform: 'translate3d(0,0,0)',
   },
   scrollText: {
     width: '50vw',                // 50% of the view width
+    zIndex: 1,
+    transform: 'translate3d(0,0,0)',
   },
   step: {
     margin: '50vh 0',
-    border: '1px solid gray', //how to add correct font
+    //border: '1px solid gray',
   }
 }
 
-
+const ids = ["robin_robinson", "grace_tian", "sarika_chawla", "emily_chan", "miela_foster", "cindy_wang", "eric_jjemba", "amy_jin", "harinni_kannan", "eshika_saxena", "isabelle_zheng", "silvia_casacuberta_puig"]
 
 const PageStories = () => {
   // TODO: read https://reactjs.org/docs/hooks-overview.html for context
@@ -43,20 +51,25 @@ const PageStories = () => {
   return (
     <div style={styles.outer}>
       <div style={styles.sticky}>
-        {/* TODO: Replace this with fixed images that change based on currentStepIndex */}
-        {/*I'm sticky. The current triggered step index is: {currentStepIndex}*/}
-        <img src={people[currentStepIndex].pic} width={600}/>
+        <img
+          src={features[ids[currentStepIndex]].photoraw}
+          alt={features[ids[currentStepIndex]].name}
+          align="right"
+          width="450px"
+        />
       </div>
       <div style={styles.scrollText}>
         {/* In order to get rid of the dotted lines, delete "debug" */}
-        <Scrollama onStepEnter={onStepEnter} offset={0.5} debug>
+        <Scrollama onStepEnter={onStepEnter} offset={0.5}>
           {/* TODO: Read for context on map: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map */}
-          {people.map((person, stepIndex) => ( 
+          {ids.map((person, stepIndex) => (
             <Step data={stepIndex} key={stepIndex}>
               <div style={styles.step}>
-                <Styled.h1 style= {{color:person.color}}> {person.name}</Styled.h1> {/* why didn't this work with stepIndex :(((()))) */}
-                <p> Harvard {person.year}, {person.concentration},  {person.pronouns} </p>
-                <p> Quotes (just prints whole array rn): {person.quotes} </p>
+                <PersonCard person = {features[person]}/>
+                <div style={{width: '350px', margin: '20px'}} sx={{fontFamily: "label", color:"#727272"}}>
+                  {data[features[person].bardata].question}
+                  <StoriesBars width="400" height="220" data={data[features[person].bardata].stat}/>
+                </div>
               </div>
             </Step>
           ))}
