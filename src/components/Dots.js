@@ -1,160 +1,114 @@
-import React, { useMemo, useState, useCallback, useRef } from 'react';
+import React from 'react';
 import { Group } from '@visx/group';
-import { Circle } from '@visx/shape';
-import { GradientPinkRed } from '@visx/gradient';
-import { scaleLinear } from '@visx/scale';
-import genRandomNormalPoints, {
-  PointsRange,
-} from '@visx/mock-data/lib/generators/genRandomNormalPoints';
-import { withTooltip, Tooltip } from '@visx/tooltip';
-import { WithTooltipProvidedProps } from '@visx/tooltip/lib/enhancers/withTooltip';
-import { voronoi, VoronoiPolygon } from '@visx/voronoi';
-import { localPoint } from '@visx/event';
-import { people } from '../constants/people';
+import { Pack, hierarchy } from '@visx/hierarchy';
+import rawData from '@visx/mock-data/lib/mocks/exoplanets';
+import { features, featureArray } from '../constants/features';
+import { withTooltip, Tooltip, defaultStyles } from '@visx/tooltip';
+import Image from 'react-bootstrap/Image';
 
-const points = people; //genRandomNormalPoints(600, /* seed= */ 0.5).filter((_, i) => i < 600);
-console.log(points);
-const x = (d) => d[0];
-const y = (d) => d[1];
+const tooltipStyles = {
+  ...defaultStyles,
+  minWidth: 60,
+  backgroundColor: 'rgba(0,0,0,0.9)',
+  color: 'white',
+};
+
+let imageCircle = <Image src="holder.js/171x180" roundedCircle />;
 
 let tooltipTimeout;
+
+function extent(allData, value) {
+  return [Math.min(...allData.map(value)), Math.max(...allData.map(value))];
+}
+
+const filteredPlanets = rawData.filter(d => d.distance !== 0 && d.distance != null);
+const pack = { children: filteredPlanets, name: 'root', radius: 0, distance: 0 };
+
+const root = hierarchy(pack)
+  .sum(d => d.radius * d.radius)
+  .sort(
+    (a, b) =>
+      // sort by hierarchy, then distance
+      (a?.data ? 1 : -1) - (b?.data ? 1 : -1) ||
+      (a.children ? 1 : -1) - (b.children ? 1 : -1) ||
+      (a.data.distance == null ? -1 : 1) - (b.data.distance == null ? -1 : 1) ||
+      a.data.distance - b.data.distance,
+  );
+
+const defaultMargin = { top: 10, left: 30, right: 40, bottom: 80 };
+
+function addXY(person){
+  person["x"] = Math.random();
+  person["y"] = Math.random();
+}
+function each(obj, fn) { Object.keys(obj).forEach(key => fn(obj[key])); }
+// each(features, addXY_fromAry)
+featureArray.forEach(addXY);
+// Object.prototype.map = function(f) { return Object.keys(this).map(key => f(this[key], key)); }
 
 export default withTooltip(
   ({
     width,
     height,
-    showControls = true,
-    hideTooltip,
-    showTooltip,
+    margin = defaultMargin,
     tooltipOpen,
-    tooltipData,
     tooltipLeft,
     tooltipTop,
+    tooltipData,
+    hideTooltip,
+    showTooltip,
   }) => {
-    if (width < 10) return null;
-    const [showVoronoi, setShowVoronoi] = useState(showControls);
-    const svgRef = useRef(null);
-    const xScale = useMemo(
-      () =>
-        scaleLinear({
-          domain: [1.3, 2.2],
-          range: [0, width],
-          clamp: true,
-        }),
-      [width],
-    );
-    const yScale = useMemo(
-      () =>
-        scaleLinear({
-          domain: [0.75, 1.6],
-          range: [height, 0],
-          clamp: true,
-        }),
-      [height],
-    );
-    const voronoiLayout = useMemo(
-      () =>
-        voronoi({
-          x: d => people["x"] ?? 0,
-          y: d => people["y"] ?? 0,
-          width,
-          height,
-        })(points),
-      [width, height, xScale, yScale],
-    );
 
-    // event handlers
-    const handleMouseMove = useCallback(
-      (event) => {
-        if (tooltipTimeout) clearTimeout(tooltipTimeout);
-        if (!svgRef.current) return;
-
-        // find the nearest polygon to the current mouse position
-        const point = localPoint(svgRef.current, event);
-        if (!point) return;
-        const neighborRadius = 100;
-        const closest = voronoiLayout.find(point.x, point.y, neighborRadius);
-        if (closest) {
-          showTooltip({
-            tooltipLeft: xScale(x(closest.data)),
-            tooltipTop: yScale(y(closest.data)),
-            tooltipData: closest.data,
-          });
-        }
-      },
-      [xScale, yScale, showTooltip, voronoiLayout],
-    );
-
-    const handleMouseLeave = useCallback(() => {
-      tooltipTimeout = window.setTimeout(() => {
-        hideTooltip();
-      }, 300);
-    }, [hideTooltip]);
-
-    return (
+    return width < 10 ? null : (
       <div>
-        <svg width={width} height={height} ref={svgRef}>
-          <GradientPinkRed id="dots-pink" />
-          {/** capture all mouse events with a rect */}
-          <rect
-            width={width}
-            height={height}
-            rx={14}
-            fill="url(#dots-pink)"
-            onMouseMove={handleMouseMove}
-            onMouseLeave={handleMouseLeave}
-            onTouchMove={handleMouseMove}
-            onTouchEnd={handleMouseLeave}
-          />
-          <Group pointerEvents="none">
-            {points.map((point, i) => (
-              <Circle
-                key={`point-${point[0]}-${i}`}
-                className="dot"
-                cx={point["x"]*width}
-                cy={point["y"]*height}
-                r={15}
-                fill={point.color}
-              />
-            ))}
-            {showVoronoi &&
-              voronoiLayout
-                .polygons()
-                .map((polygon, i) => (
-                  <VoronoiPolygon
-                    key={`polygon-${i}`}
-                    polygon={polygon}
-                    fill="white"
-                    stroke="white"
-                    strokeWidth={1}
-                    strokeOpacity={0.2}
-                    fillOpacity={tooltipData === polygon.data ? 0.5 : 0}
-                  />
-                ))}
-          </Group>
+        <svg width={width} height={height}>
+          <rect width={width} height={height} rx={14} fill="#ffffff" />
+          <Pack root={root}>
+            {packData => {
+              const circles = featureArray; //packData.descendants().slice(2); // skip outer hierarchies
+              return (
+                <Group top={height} left={width}>
+                  {circles.map((circle, i) => (
+                    <circle
+                      key={`circle-${i}`}
+                      r={20}
+                      cx={(width*0.8)*circle.x - width*0.9}
+                      cy={(height*0.8)*circle.y - height*0.9} //{circle.year === '2022' ? width : width*Math.random()} //pick random place in 1/4 of screen by year
+                      fill={circle.color}
+                      onMouseLeave={() => {
+                        tooltipTimeout = window.setTimeout(() => {
+                          hideTooltip();
+                        }, 300);
+                      }}
+                      // {...console.log(circle.x)}
+                      onMouseMove={() => {
+                        if (tooltipTimeout) clearTimeout(tooltipTimeout);
+                        {console.log(circle.x)}
+                        const top = circle.y*height*0.8 - 20
+                        const left = circle.x*width*0.8
+                        showTooltip({
+                          tooltipData: circle,
+                          tooltipTop: top,
+                          tooltipLeft: left,
+                        });
+                        
+                      }}
+                    />
+                  ))}
+                </Group>
+              );
+            }}
+          </Pack>
         </svg>
-        {tooltipOpen && tooltipData && tooltipLeft != null && tooltipTop != null && (
-          <Tooltip left={tooltipLeft + 10} top={tooltipTop + 10}>
-            <div>
-              <strong>x:</strong> {'hi'}
-            </div>
-            <div>
-              <strong>y:</strong> {y(tooltipData)}
-            </div>
-          </Tooltip>
-        )}
-        {showControls && (
+        {tooltipOpen && tooltipData && (
           <div>
-            <label style={{ fontSize: 12 }}>
-              <input
-                type="checkbox"
-                checked={showVoronoi}
-                onChange={() => setShowVoronoi(!showVoronoi)}
-              />
-              &nbsp;Show voronoi point map
-            </label>
-          </div>
-        )}
+            <Tooltip top={tooltipTop} left={tooltipLeft} style={tooltipStyles}>
+              {console.log("tooltip", tooltipData)}
+              <div>{tooltipData["name"]}</div>
+            </Tooltip>
+            {<img src={tooltipData["photoraw"]} style={{position: 'absolute', top: height*0.8*tooltipData['y']+height*0.05, left: width*0.8*tooltipData['x']+0.073*width, width: '40px', height: '40px', objectFit: 'cover', borderRadius: "20px"}}/>}
+            {console.log('top', tooltipTop)}
+          </div>)}
       </div>
     );
   },

@@ -18,10 +18,12 @@ import { AxisLeft, AxisBottom } from '@visx/axis';
 import { scaleBand, scaleLinear, scaleOrdinal } from '@visx/scale';
 import { Group } from '@visx/group';
 
-export default function LineGraph2({ width, height }) {
+const a = "2009"
+const b = "2020"
+export default function LineGraph({ width, height }) {
   console.log(data_list[0]["x"]);
   const xScale = scaleLinear({
-    domain: [2016,2020],
+    domain: [(a.replace(',','')) , (b.replace(',',''))],
     nice: true
     /*
       range,
@@ -81,7 +83,7 @@ export default function LineGraph2({ width, height }) {
   const margin = { top: 10, right: 0, bottom: 40, left: 0 };
   const xMax = width - margin.left - margin.right;
   const yMax = height - margin.top - margin.bottom;
-  xScale.rangeRound([0, xMax-2*112]);
+  xScale.rangeRound([0, xMax-2*76]);
   yScale.rangeRound([yMax,50]);
 
   return (
@@ -100,7 +102,7 @@ export default function LineGraph2({ width, height }) {
             : ''
         } 
         orientation={renderHorizontally ? yAxisOrientation : xAxisOrientation} /> */}
-      <AnimatedGrid columns={false} numTicks={4} />
+      <AnimatedGrid columns={false} numTicks={12} />
       <CustomChartBackground />
       <AnimatedAreaSeries dataKey="All CS Concentrators" data={data_list[0]} {...accessors} />
       <AnimatedAreaSeries dataKey="Female CS Concentrators" data={data_list[1]} {...accessors} />
@@ -125,17 +127,18 @@ export default function LineGraph2({ width, height }) {
     </XYChart>
     <AxisBottom
         scale={xScale}
-        numTicks={5}
+        numTicks={12}
         top={yMax}
-        left={112}
+        left={76}
         label={'Year'}
         stroke={'#1b1a1e'}
+        // tickFormat={'+%'}
       />
       <AxisLeft
         scale={yScale}
-        numTicks={3}
+        numTicks={5}
         top={0}
-        left={112}
+        left={76}
         label={'Number'}
         stroke={'#1b1a1e'}
       />

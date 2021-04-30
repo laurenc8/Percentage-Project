@@ -9,20 +9,6 @@ import { data } from '../constants/data';
 import StoriesBars from '../components/StoriesBars';
 import PersonCard from "../components/PersonCard";
 
-<<<<<<< HEAD
-
-const data = [
-  {category: "my race", frequency: "0.1"},
-  {category: "my ethnicity", frequency: "0.3"},
-  {category: "my gender identity", frequency: "0.1"},
-  {category: "my sexual orientation", frequency: "0.2"},
-  {category: "my religious beliefs", frequency: "0.05"},
-  {category: "being a first generation student", frequency: "0.05"},
-  {category: "my income status", frequency: "0.2"},
-];
-
-=======
->>>>>>> 219856d57c809360079746397836c2ba35de9201
 // Feel free to change styles below
 const styles = {
   outer: {
