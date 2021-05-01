@@ -1,8 +1,8 @@
 import { BarStackHorizontal } from '@visx/shape';
 import { Group } from '@visx/group';
-import { AxisBottom, AxisLeft } from '@visx/axis';
+import { AxisLeft } from '@visx/axis';
 import { scaleBand, scaleLinear, scaleOrdinal } from '@visx/scale';
-import { withTooltip, Tooltip, defaultStyles } from '@visx/tooltip';
+import { withTooltip } from '@visx/tooltip';
 import { PatternLines } from '@visx/pattern';
 
 const barColor = '#000000';

@@ -157,4 +157,4 @@ export default function LineGraph({ width, height }) {
 // Tooltip doesn't work on the moving text :(((((((((
 // so this graph would have to be not on the slidy stuff, or have a portion that is not slidy stuff so can 
 // I also can't center this for some reason :( 
-// and the axises don't show up
+// and the axes don't show up
