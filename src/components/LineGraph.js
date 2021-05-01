@@ -15,9 +15,12 @@ export default function LineGraph({ width, height }) {
     nice: true
   });
 
+  console.log(data_list['y'])
+  console.log(Math.max(data_list[0]))
+
   const yScale = scaleLinear({
-    domain: [0, 100],
-    nice: true
+    domain: [0, 358],
+    nice: false
   });
   
   const accessors = {
