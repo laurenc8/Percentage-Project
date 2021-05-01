@@ -1,49 +1,23 @@
-import {
-  AnimatedAxis, Axis, numTicks, // any of these can be non-animated equivalents
-  AnimatedGrid,
-  AnimatedLineSeries,
-  AnimatedAreaSeries,
-  XYChart,
-  Tooltip,
-  renderHorizontally, yAxisOrientation, xAxisOrientation,
-  lightTheme, darkTheme, buildChartTheme,
-  stackOffset, animationTrajectory
-} from '@visx/xychart';
+import { AnimatedGrid, AnimatedAreaSeries, XYChart, Tooltip, buildChartTheme } from '@visx/xychart';
 import data_list from "../constants/concentration_data";
 import CustomChartBackground from '../styles/CustomChartBackground';
-// import { customTheme } from '../styles/CustomChartTheme';
 import ResizeObserver from 'resize-observer-polyfill';
-import React, { useState } from 'react';
+import React from 'react';
 import { AxisLeft, AxisBottom } from '@visx/axis';
-import { scaleBand, scaleLinear, scaleOrdinal } from '@visx/scale';
+import { scaleLinear} from '@visx/scale';
 import { Group } from '@visx/group';
 
-const a = "2009"
-const b = "2020"
+const formatYear = (year) => String(year).replace(',', '');
+
 export default function LineGraph({ width, height }) {
-  console.log(data_list[0]["x"]);
   const xScale = scaleLinear({
-    domain: [(a.replace(',','')) , (b.replace(',',''))],
+    domain: [2009, 2020],
     nice: true
-    /*
-      range,
-      round,
-      domain,
-      nice = false,
-      clamp = false,
-    */
   });
 
   const yScale = scaleLinear({
-    domain: [0,100],
+    domain: [0, 100],
     nice: true
-    /*
-      range,
-      round,
-      domain,
-      nice = false,
-      clamp = false,
-    */
   });
   
   const accessors = {
@@ -58,28 +32,14 @@ export default function LineGraph({ width, height }) {
   
     // labels
     svgLabelBig: { fill: '#1d1b38' },
-    // svgLabelSmall?: SVGTextProps;
-    // htmlLabel?: HTMLTextStyles;
-  
-    // lines
-    // xAxisLineStyles?: LineStyles;
-    // yAxisLineStyles?: LineStyles;
-    // xTickLineStyles?: LineStyles;
-    // yTickLineStyles?: LineStyles;
     tickLength: 2,
   
     // grid
     gridColor: '#336d88',
     gridColorDark: '#1d1b38', // used for axis baseline if x/yxAxisLineStyles not set
-    // gridStyles?: CSSProperties;
   });
-  
-  const [xAxisOrientation, setXAxisOrientation] = useState('bottom');
-  const [yAxisOrientation, setYAxisOrientation] = useState('left');
-  const [renderHorizontally, setRenderHorizontally] = useState(false);
-  
+
   // bounds
-  
   const margin = { top: 10, right: 0, bottom: 40, left: 0 };
   const xMax = width - margin.left - margin.right;
   const yMax = height - margin.top - margin.bottom;
@@ -88,73 +48,78 @@ export default function LineGraph({ width, height }) {
 
   return (
     <div>
-      <svg width={width} height={height}>
-          <Group left={margin.left} top={margin.top}>
-      <XYChart theme = {customTheme} xScale={{ type: 'band' }} yScale={{ type: 'linear' }}
-        width = {width}
-        height = {height}>
-      {/* <AnimatedAxis 
-        label={
-          stackOffset == null
-            ? 'Temperature (°F)'
-            : stackOffset === 'expand'
-            ? 'Fraction of total temperature'
-            : ''
-        } 
-        orientation={renderHorizontally ? yAxisOrientation : xAxisOrientation} /> */}
-      <AnimatedGrid columns={false} numTicks={12} />
-      <CustomChartBackground />
-      <AnimatedAreaSeries dataKey="All CS Concentrators" data={data_list[0]} {...accessors} />
-      <AnimatedAreaSeries dataKey="Female CS Concentrators" data={data_list[1]} {...accessors} />
-      <Tooltip
-        resizeObserverPolyfill={ResizeObserver}
-        snapTooltipToDatumX
-        snapTooltipToDatumY
-        showVerticalCrosshair
-        showSeriesGlyphs
-        renderTooltip={({ tooltipData, colorScale }) => (
-          <div>
-            <div style={{ color: colorScale(tooltipData.nearestDatum.key) }}>
-              {tooltipData.nearestDatum.key}
-            </div>
-            {accessors.xAccessor(tooltipData.nearestDatum.datum)}
-            {', '}
-            {accessors.yAccessor(tooltipData.nearestDatum.datum)}
-          </div>
-        )}
-      />
-      
-    </XYChart>
-    <AxisBottom
-        scale={xScale}
-        numTicks={12}
-        top={yMax}
-        left={76}
-        label={'Year'}
-        stroke={'#1b1a1e'}
-        // tickFormat={'+%'}
-      />
-      <AxisLeft
-        scale={yScale}
-        numTicks={5}
-        top={0}
-        left={76}
-        label={'Number'}
-        stroke={'#1b1a1e'}
-      />
-    {/* <AxisBottom
-        // key={`time-axis-${animationTrajectory}-${true}`}
-        orientation={'bottom'}
-        xScale={xScale}
-        // animationTrajectory={animationTrajectory}
-      /> */}
-    </Group>
-  </svg>
+      <svg width={width} height={height+15}>
+        <Group left={margin.left} top={margin.top}>
+          <XYChart theme = {customTheme} xScale={{ type: 'band' }} yScale={{ type: 'linear' }}
+            width = {width}
+            height = {height}>
+            <AnimatedGrid columns={false} numTicks={12} />
+            <CustomChartBackground />
+            <AnimatedAreaSeries dataKey="All CS Concentrators" data={data_list[0]} {...accessors} />
+            <AnimatedAreaSeries dataKey="Female CS Concentrators" data={data_list[1]} {...accessors} />
+            <Tooltip
+              resizeObserverPolyfill={ResizeObserver}
+              snapTooltipToDatumX
+              snapTooltipToDatumY
+              showVerticalCrosshair
+              showSeriesGlyphs
+              renderTooltip={({ tooltipData, colorScale }) => (
+                <div>
+                  <div style={{ color: colorScale(tooltipData.nearestDatum.key) }}>
+                    {tooltipData.nearestDatum.key}
+                  </div>
+                  {accessors.xAccessor(tooltipData.nearestDatum.datum)}
+                  {', '}
+                  {accessors.yAccessor(tooltipData.nearestDatum.datum)}
+                </div>
+              )}
+            />
+          </XYChart>
+          <AxisBottom
+            scale={xScale}
+            tickFormat={formatYear}
+            numTicks={12}
+            top={yMax}
+            left={76}
+            label={'Year'}
+            stroke={'#727272'}
+            labelProps={{
+              fill: '#727272',
+              fontFamily: 'Calibre, sans-serif',
+              fontSize: 15,
+              dy: '0.33em',
+            }}
+            tickLabelProps={() => ({
+              fill: '#727272',
+              fontFamily: 'Calibre, sans-serif',
+              fontSize: 15,
+              textAnchor: 'middle',
+              dy: '0.33em',
+            })}
+          />
+          <AxisLeft
+            scale={yScale}
+            numTicks={10}
+            top={0}
+            left={76}
+            label={'Number'}
+            stroke={'#727272'}
+            labelProps={{
+              fill: '#727272',
+              fontFamily: 'Calibre, sans-serif',
+              fontSize: 15,
+              dy: '0.33em',
+            }}
+            tickLabelProps={() => ({
+              fill: '#727272',
+              fontFamily: 'Calibre, sans-serif',
+              fontSize: 15,
+              textAnchor: 'end',
+              dy: '0.33em',
+            })}
+          />
+        </Group>
+      </svg>
     </div>
   );
 }
-
-// Tooltip doesn't work on the moving text :(((((((((
-// so this graph would have to be not on the slidy stuff, or have a portion that is not slidy stuff so can 
-// I also can't center this for some reason :( 
-// and the axes don't show up

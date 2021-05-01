@@ -28,5 +28,5 @@ const data_female_cs = [
   { x: "2020", y: 75 },
 ];
 
-const all_data = [data_all_cs, data_female_cs]
-export default all_data;
+const data_list = [data_all_cs, data_female_cs]
+export default data_list;
