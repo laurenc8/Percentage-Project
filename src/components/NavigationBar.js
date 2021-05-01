@@ -1,5 +1,6 @@
 import { NavLink } from 'reactstrap';
 import { Navbar, Nav } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import "./NavigationBar.css";
 
 function NavigationBar() {
@@ -8,9 +9,9 @@ function NavigationBar() {
       <Navbar expand="lg">
         <Navbar.Brand>The % Project</Navbar.Brand>
         <Nav>
-          <NavLink href="/gallery">03. Gallery</NavLink>
-          <NavLink href="/data">02. Data</NavLink>
-          <NavLink href="/">01. Stories</NavLink>
+          <Link to="/gallery">03. Gallery</Link>
+          <Link to="/data">02. Data</Link>
+          <Link to="/">01. Stories</Link>
         </Nav>
       </Navbar>
     </div>
