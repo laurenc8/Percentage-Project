@@ -1,8 +1,8 @@
 import { BarStackHorizontal } from '@visx/shape';
 import { Group } from '@visx/group';
-import { AxisBottom, AxisLeft } from '@visx/axis';
+import { AxisLeft } from '@visx/axis';
 import { scaleBand, scaleLinear, scaleOrdinal } from '@visx/scale';
-import { withTooltip, Tooltip, defaultStyles } from '@visx/tooltip';
+import { withTooltip } from '@visx/tooltip';
 import { PatternLines } from '@visx/pattern';
 
 const barColor = '#000000';
@@ -10,14 +10,6 @@ const unusedColor = '#000000';
 export const textColor = '#727272';
 export const background = '#F9F9F9';
 const defaultMargin = { top: 20, left: 200, right: 40, bottom: 20 };
-// const tooltipStyles = {
-//   ...defaultStyles,
-//   minWidth: 50,
-//   backgroundColor: 'rgba(0,0,0,0.9)',
-//   color: 'white',
-// };
-
-// let tooltipTimeout;
 
 export default withTooltip(
   ({
@@ -58,7 +50,7 @@ export default withTooltip(
 
     frequencyScale.rangeRound([0, xMax]);
     categoryScale.rangeRound([yMax, 0]);
-
+    
     return width < 10 ? null : (
       <div>
         <svg width={width} height={height}>
@@ -93,21 +85,6 @@ export default withTooltip(
                         height={bar.height}
                         fill={"url('#lines')"}
                         stroke="black"
-                        // onMouseLeave={() => {
-                        //   tooltipTimeout = window.setTimeout(() => {
-                        //     hideTooltip();
-                        //   }, 300);
-                        // }}
-                        // onMouseMove={() => {
-                        //   if (tooltipTimeout) clearTimeout(tooltipTimeout);
-                        //   const top = bar.y + margin.top;
-                        //   const left = bar.x + bar.width + margin.left;
-                        //   showTooltip({
-                        //     tooltipData: bar,
-                        //     tooltipTop: top,
-                        //     tooltipLeft: left,
-                        //   });
-                        // }}
                       />
                       <text x={bar.x + bar.width + 10} y={bar.y + bar.height/2 + 6} style={{fill: textColor, fontFamily: 'Calibre, sans-serif', fontSize: 18}}>
                         {(bar.bar[1]*100).toFixed(1)}%
@@ -156,17 +133,6 @@ export default withTooltip(
           }}
         >
         </div>
-        {/* {tooltipOpen && tooltipData && (
-          <Tooltip top={tooltipTop} left={tooltipLeft} style={tooltipStyles}>
-            <div style={{ color: colorScale(tooltipData.key) }}>
-              <strong>{tooltipData.key}</strong>
-            </div>
-            <div>{(tooltipData.bar.data[tooltipData.key]*100).toFixed(1)}%</div>
-            <div>
-              <small>{getCategory(tooltipData.bar.data)}</small>
-            </div>
-          </Tooltip>
-        )} */}
       </div>
     );
   },

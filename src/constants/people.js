@@ -74,4 +74,6 @@ const miela = {
 }
 
 //making list of all people to iterate through in PageStories
+//export const people = [grace, robin, sarika, cindy, eric, miela,np1,np2, np3,np4,np5,np6,np7,np8,np9,np10,np11]
+
 export const people = [grace, robin, sarika, cindy, eric, miela]

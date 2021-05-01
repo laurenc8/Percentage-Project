@@ -3,7 +3,7 @@
 
 import { jsx } from 'theme-ui';
 
-const defaultWidth = '720px';
+const defaultWidth = '720px' ;
 const defaultMargin = '20px';
 
 // Wrapper around content to enforce a maximum width

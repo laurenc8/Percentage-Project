@@ -1,3 +1,6 @@
+import LineGraph from '../components/LineGraph';
+import Dots from '../components/Dots';
+
 export const Viz = ({ children }) => (
   <div style={{padding: 20, backgroundColor: 'lightblue'}}>{children || 'Viz'}</div>
 )
@@ -16,7 +19,7 @@ export const Person = ({ children }) => (
 
 *By the Percentage Project Team: Melissa Kwan ’22, Nadine Meister ’24, Lauren Chen ’24, Parita Shah ’24, and Leah Teichholtz ’24 *
 
-<Viz />
+<Dots width = {window.innerWidth > 720 ? 720 : window.innerWidth * 0.9} height={window.innerHeight/2.4} />
 
 ## The “STEM” dream - why concentrate in STEM-related fields?
 
@@ -44,7 +47,9 @@ A [WiCS advocacy study from 2016](http://advocacy.harvardwics.com/data/) found t
 
 But with a bigger concentration comes more crowded office hours, larger lectures, and less individualized support, especially for those who might be coming from underrepresented backgrounds. 
 
-<Viz>Growth and change in CS concentrators over the years</Viz>
+<div style={{textAlign: "center", backgroundColor: "#F9F9F9"}}>
+<LineGraph width = {window.innerWidth > 720 ? 720 : window.innerWidth * 0.9 } height = {(window.innerWidth > 720 ? 720 : window.innerWidth * 0.9 )*3/4.5}> </LineGraph> 
+</div>
 
 ## A Lack of Support for Women and Underrepresented Minorities
 
