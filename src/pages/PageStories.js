@@ -36,7 +36,7 @@ const styles = {
   }
 }
 
-const ids = ["robin_robinson", "grace_tian", "sarika_chawla", "emily_chan", "miela_foster", "cindy_wang", "eric_jjemba", "amy_jin", "harinni_kannan", "eshika_saxena", "isabelle_zheng", "silvia_casacuberta_puig"]
+const ids = ["robin_robinson", "grace_tian", "sarika_chawla", "emily_chan", "miela_foster", "cindy_wang", "eric_jjemba", "amy_jin", "harinni_kannan", "eshika_saxena", "isabelle_zheng", "silvia_casacuberta_puig", "helen_cho"]
 
 const PageStories = () => {
   // TODO: read https://reactjs.org/docs/hooks-overview.html for context
@@ -66,10 +66,10 @@ const PageStories = () => {
             <Step data={stepIndex} key={stepIndex}>
               <div style={styles.step}>
                 <PersonCard person = {features[person]}/>
-                <div style={{width: '350px', margin: '20px'}} sx={{fontFamily: "label", color:"#727272"}}>
+                {/* <div style={{width: '350px', margin: '20px'}} sx={{fontFamily: "label", color:"#727272"}}>
                   {data[features[person].bardata].question}
                   <StoriesBars width="400" height="220" data={data[features[person].bardata].stat}/>
-                </div>
+                </div> */}
               </div>
             </Step>
           ))}
