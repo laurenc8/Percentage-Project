@@ -36,7 +36,7 @@ const styles = {
   }
 }
 
-const ids = ["robin_robinson", "grace_tian", "sarika_chawla", "emily_chan", "miela_foster", "cindy_wang", "eric_jjemba", "amy_jin", "harinni_kannan", "eshika_saxena", "isabelle_zheng", "silvia_casacuberta_puig"]
+const ids = ["robin_robinson", "sofia_gianuzzi"]
 
 const PageStories = () => {
   // TODO: read https://reactjs.org/docs/hooks-overview.html for context

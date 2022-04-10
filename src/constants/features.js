@@ -12,12 +12,12 @@ export const featureArray = [
       "color": "#028ac0"
   },
   {
-      "id": "grace_tian",
-      "name": "Grace Tian",
-      "year": 2022,
-      "concentration": "Computer Science + Statistics",
+      "id": "sofia_gianuzzi",
+      "name": "Sofia Gianuzzi",
+      "year": 2025,
+      "concentration": "Computer Science",
       "pronouns": "she/her/hers",
-      "quote": "I think that's what makes people feel the most alone, doing CS or any field in general, when they have questions and they're treated with impatience or annoyance. So in general just being treated with more patience and friendliness when it comes to learning these new things for the first time.",
+      "quote": "“I was really terrified that I’d get scared out of concentrating in computer science just because I’ve heard it’s a bit of a harrowing concentration and there always seems to be a societal pushback to women in computer science. I think that these mentorship programs have really helped me in particular as someone who’s always in contact with men when it comes to CS.”",
       "photostat": "https://lh3.googleusercontent.com/pw/ACtC-3fVNMaYrhpg0v3zGy1_RfMViwfIDV1llY7dMJJEc1wsQaaG_SddFkxn37c3FsNQOt0HXPMmDpAUAHVnVWgv-_ldzp9Sq7yPNRwPOivd1_HBLUzj0oU1P1T62dg7TnxyJLMmlTMTEwGLeCryqK9xCkGF=w1000-h1400-no?authuser=0",
       "photoraw": "https://lh3.googleusercontent.com/bgPwzuilU1EZkzOdJrcEbxZngd9ldBoOhyZd53LP-DIE3n8mIpMJ6a-eQHWwhC4k8VRRi7OtTDjMvYCEa6obVaGCiN93_-4GLNclzUUJv-FlbF948eHFunoDKAUCTtoXMQCwjiTaVVOeS38EtWYz6B7Bw1C02mkWog__mx-mAtiJbiZJm-MicPmGc3aNRzezchfFQywnDbLGBGUFIKe0eA43_4TZuK6-WWSGSZ3REncaAVS_0ZrTsruV3EcMTZfGDYbG1GRad5wT_k_Qh6xQ3e7GhrPsq2Qm574Ci6iE0XNSEJYlQW1Rj1b3tsUzk0JRybajtn9l2twv33vooOZ9d-df2Qos2QwGpfrbJIETGPOYDwhJIVkbGV_M1YAlJThsATRHs2rjKTK8WZdUONjmPvJIB4wn_oKUKmHa1PifC9ZN8iKn0ME6WH_LDQ3xFI0GNSVic_o0BxeK33pVqg0P9WNXcUukEDUsat5buc3KE3ZaP__4bUA0TujoDHa_svKcAPUdacG7fl9FLYa7kreW4XjDTj_69k1TWim3c0DvB_4oh4q71n9jKJWbSNV_qAgamVbqwKuJMrRWKxiXNhmv4UcP0RwhJk8W_iTNAXo3Z--7rqmXdFf95whOM0-K9BzErDGQSH9aCOXJYKzZMWUx2Yrd7GczhSk4DH9ILDRyz17geIyt_hQUncg7yCQT_qPC2Vqk4OJPIi4ttBggS1c_MSs=w1000-h1400-no?authuser=1",
       "bardata": "gender-6.1",
