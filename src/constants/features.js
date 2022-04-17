@@ -307,6 +307,7 @@ export const featureArray = [
     }
 ]
 
+
 let feature_dict = {};
 featureArray.forEach(f => feature_dict[f.id] = f);
 export const features = feature_dict;
