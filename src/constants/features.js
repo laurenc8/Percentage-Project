@@ -295,6 +295,8 @@ export const featureArray = [
       "concentration": "Computer Science",
       "pronouns": "she/her/hers"
   },
+
+  // 2021-2022 features start here. in order of figma gallery, except for first one (helen)
   {
     "id": "helen_cho",
     "name": "Helen Cho",
@@ -303,9 +305,161 @@ export const featureArray = [
     "pronouns": "she/her/hers",
     "quote": "Personally, I was really worried about not \"making it\" in Computer Science at Harvard, but at the end of the day, you will. Everything gets easier as you learn more and become older, but it can be hard to believe that when you’re a young CS concentrator. At the end of the day, it will happen, and it will be okay.",
     "photoraw": "https://lh3.googleusercontent.com/3awmltumt_0dUakywXKcaIFhkfri6LqnumHToaXO8loi2LnUqO3CTcIkG6GbCDCXCH6c50J-JTVCf1XU-gioiCWO_84UI1f7wAyVmru0WGxisL_fONx04U0k3QYEGamNCwG0isi0VW5Yvih4ypwBfaQeo_3e3cMOJXpCfECPi_hGySB_iXXTt83zlefPo1PebBrLhN_PYx1b07xItpiulzskhE8ZnSEOWufgRgfVeJo9QstYk9DMOkJYUhitX75vDJrrDxwdYPib_Y_vF2ItiZHL2l2fGuDG4ijT2LKD5QCOu7yDYKv2vVLoIkPXdAzGDRD8rSsMySM51Xme7vs6_Rf8lIcCL93Shziy5rfKcmVlcPkTdMTx2oVGKk7OQVJ3KBTYumk4lnbg1YzNLq6A_Hu9ZnFb4Z5Fz3AickXjt359a9Ybyqs54JudNbwIgE_bJhDniW2qgZxv9mVEQLZFUssg68hA_J7cO0O020e-7bK0FW99KvkpVqgTP_CZz0rDU-2VRi48B2xYu4D3oD5MPJjdq2lO54Pt58xltdkdYOI29GGhQMC9YYhg_vWj9ZMs4u8E5S6qlXZ5zsJTcZcL_RwiMpq4x4XrVcw8e-1AhtkjoJzPURYalsEOi41ixWSBqAFKD2hfdk5Ai1GqpCmUY1G0eh3Cem08bBEGYodOa1N7qmXpYDOq5N8U9OPRbQvi0wzd8mZmpmFtPvY9HKNba-bVBDqpCHNAKbW7wxyTWK4_NJ3m-kivwJRcDE9ZrudcqRdFSQ4UvaTOtdd7Grxxuy94YQRldfXNdLteGwm89UZfk1zVWIRnJNu-CBSEa92f7mvvstqEmtT4eXjVV_ptWg6UzlL-W4WrC8nyHEo=w1126-h1500-no?authuser=1",
-    "color": "#89245e"
-    }
+    "bardata": "-",
+    "color": "#755566"
+  },
+  {
+    "id": "iris_lang",
+    "name": "Iris Lang",
+    "year": 2025,
+    "concentration": "Statistics + Computer Science",
+    "pronouns": "she/her/hers",
+    "quote": "-",
+    "photostat": " ",
+    "photoraw": "-",
+    "bardata": "-",
+    "color": "#-"
+  },
+  {
+    "id": "huiwen_chen",
+    "name": "Huiwen Chen",
+    "year": 202,
+    "concentration": "-",
+    "pronouns": "-",
+    "quote": "-",
+    "photostat": " ",
+    "photoraw": "-",
+    "bardata": "-",
+    "color": "#-"
+  },
+  {
+    "id": "tina_gong",
+    "name": "Ting Gong",
+    "year": 2025,
+    "concentration": "-",
+    "pronouns": "-",
+    "quote": "-",
+    "photostat": " ",
+    "photoraw": "-",
+    "bardata": "-",
+    "color": "#-"
+  },
+  {
+    "id": "maegan_jong",
+    "name": "Maegan Jong",
+    "year": 202,
+    "concentration": "-",
+    "pronouns": "-",
+    "quote": "-",
+    "photostat": " ",
+    "photoraw": "-",
+    "bardata": "-",
+    "color": "#-"
+  },
+  {
+    "id": "katrina_brown",
+    "name": "Katrina Brown",
+    "year": 2025,
+    "concentration": "-",
+    "pronouns": "-",
+    "quote": "-",
+    "photostat": " ",
+    "photoraw": "-",
+    "bardata": "-",
+    "color": "#-"
+  },
+  {
+    "id": "christina_xiao",
+    "name": "Christina Xiao",
+    "year": 202,
+    "concentration": "-",
+    "pronouns": "-",
+    "quote": "-",
+    "photoraw": "-",
+    "color": "#-"
+  },
+  {
+    "id": "diana_zhu",
+    "name": "Diana Zhu",
+    "year": 202,
+    "concentration": "-",
+    "pronouns": "-",
+    "quote": "-",
+    "photoraw": "-",
+    "color": "#-"
+  },
+  {
+    "id": "jon_syla",
+    "name": "Jon Syla",
+    "year": 202,
+    "concentration": "-",
+    "pronouns": "-",
+    "quote": "-",
+    "photoraw": "-",
+    "color": "#-"
+  },
+  {
+    "id": "karen_li",
+    "name": "Karen Li",
+    "year": 202,
+    "concentration": "-",
+    "pronouns": "-",
+    "quote": "-",
+    "photoraw": "-",
+    "color": "#-"
+  },
+  {
+    "id": "talia_hanley",
+    "name": "Talia Hanley",
+    "year": 202,
+    "concentration": "-",
+    "pronouns": "-",
+    "quote": "-",
+    "photoraw": "-",
+    "color": "#-"
+  },
+  {
+    "id": "hanna_chang",
+    "name": "Hannah Chang",
+    "year": 2025,
+    "concentration": "-",
+    "pronouns": "-",
+    "quote": "-",
+    "photoraw": "-",
+    "color": "#-"
+  },
+  {
+    "id": "sofia_gianuzzi",
+    "name": "Sofia Gianuzzi",
+    "year": 2025,
+    "concentration": "-",
+    "pronouns": "-",
+    "quote": "-",
+    "photoraw": "-",
+    "color": "#-"
+  },
+  {
+    "id": "cassie_wang",
+    "name": "Cassie Wang",
+    "year": 202,
+    "concentration": "-",
+    "pronouns": "-",
+    "quote": "-",
+    "photoraw": "-",
+    "color": "#-"
+  },
+  {
+    "id": "vicki_xu",
+    "name": "Vicki Xu",
+    "year": 202,
+    "concentration": "-",
+    "pronouns": "-",
+    "quote": "-",
+    "photoraw": "-",
+    "color": "#-"
+  }
 ]
+
 
 let feature_dict = {};
 featureArray.forEach(f => feature_dict[f.id] = f);
